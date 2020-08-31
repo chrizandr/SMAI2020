@@ -1,0 +1,78 @@
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx} %package to manage images
+\usepackage{subfigure}
+% \usepackage{subcaption}
+\graphicspath{{figures/}}
+\usepackage{optidef}
+\usepackage{pgffor}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{parskip}
+\usepackage{amsmath,amssymb}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{xspace}
+\hypersetup{
+    colorlinks = true,
+    linkbordercolor = {white},
+}
+
+\newcommand{\missing}[1]{
+    {\color{brown}This question is not complete. Contact #1.}
+}
+\newcommand{\incorrect}[1]{
+    {\color{red} This question may be incorrect. Contact #1.}
+}
+
+\newcommand{\realnumbers}{\mathbb{R}}
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\pnorm}[2]{\left\lVert#1\right\rVert_{#2}}
+
+\newcommand{\vx}{\mathbf{x}}
+% Caps => Matrices.
+% \newcommand{\vX}{\mathbf{X}}
+\newcommand{\vy}{\mathbf{y}}
+\newcommand{\vl}{\mathbf{l}}
+
+\newcommand{\vu}{\mathbf{u}}
+\newcommand{\vv}{\mathbf{v}}
+
+\newcommand{\va}{\mathbf{a}}
+\newcommand{\vb}{\mathbf{b}}
+\newcommand{\vc}{\mathbf{c}}
+\newcommand{\vd}{\mathbf{d}}
+\newcommand{\vf}{\mathbf{f}}
+
+\newcommand{\mA}{\mathbf{A}}
+\newcommand{\mB}{\mathbf{B}}
+\newcommand{\mC}{\mathbf{C}}
+\newcommand{\mI}{\mathbf{I}}
+\newcommand{\mS}{\mathbf{S}}
+\newcommand{\mD}{\mathbf{D}}
+\newcommand{\mL}{\mathbf{L}}
+\newcommand{\mK}{\mathbf{K}}
+\newcommand{\mU}{\mathbf{U}}
+\newcommand{\mQ}{\mathbf{Q}}
+\newcommand{\mR}{\mathbf{R}}
+\newcommand{\mP}{\mathbf{P}}
+\newcommand{\mX}{\mathbf{X}}
+
+
+
+\newcommand{\doubt}[1]{
+    \fcolorbox{black}{gray!10}{
+        \begin{minipage}{0.8\linewidth}
+            #1
+        \end{minipage}
+    }
+}
+
+\newcommand{\error}[1]{
+    {\color{gray}
+        #1
+    }
+}
