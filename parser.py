@@ -84,7 +84,7 @@ class Assignment(object):
 
     def split_rolls(self, num_versions):
         data = pd.read_csv(self.roll_nums)
-        emails = [x for x in data["Email"]]
+        emails = [x for x in data["Email ID"]]
         random.shuffle(emails)
 
         idx = np.linspace(0, len(emails), num_versions+1)
@@ -92,7 +92,7 @@ class Assignment(object):
         for copy_id in range(num_versions):
             fname = "rolls-{}-{}.csv".format(self.id_, copy_id)
             with open(os.path.join(self.output, fname), "w") as f:
-                f.write(",\n".join(emails[int(idx[copy_id]): int(idx[copy_id+1])]))
+                f.write(",\n".join(emails[int(idx[copy_id]): int(idx[copy_id+1])]) + ",")
         print("Split roll numbers into {} groups".format(num_versions))
 
     def _gen_main_doc(self, doc_name, q_name):
