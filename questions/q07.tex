@@ -1,0 +1,84 @@
+\begin{frame}
+\section{}
+  (use notations  and conventions from the class) Consider the problem of linear regression where we minimize the loss
+  \[{\cal L}_1 = \frac{1}{N}\sum_{i=1}^N \alpha_i (y_i - {\bf w}^T{\bf x}_i)^2 + \lambda_1 g({\bf w})\] where $g()$ is a regularization term. We also write the loss in matrix form as
+  \[ {\cal L}_2 = \frac{1}{N} [Y-{\bf X}{\bf w}]^TA[Y-{\bf X}{\bf w}] + \lambda_2 g({\bf w}). \]
+
+
+  If ${\cal L}_1 = {\cal L}_2$ for all $\bf{w}$, then
+    \begin{enumerate}[label=(\Alph*)]
+      \item $A$ is a diagonal matrix % Ans
+      \item $A_{ij} = \alpha_i \cdot \alpha_j $
+      \item $A_{ii} = \alpha_i$ else zero % Ans
+      \item $A_{ii} = \frac{1}{\alpha_i}$ else zero
+      \item none of the above   % None
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}
+\section{}
+  (use notations  and conventions from the class) Consider the problem of linear regression where we minimize the loss
+  \[{\cal L}_1 = \frac{1}{N}\sum_{i=1}^N \alpha_i (y_i - {\bf w}^T{\bf x}_i)^2 + \lambda_1 g({\bf w})\] where $g()$ is a regularization term. We also write the loss in matrix form as
+  \[ {\cal L}_2 = \frac{1}{N} [Y-{\bf X}{\bf w}]^TA[Y-{\bf X}{\bf w}] + \lambda_2 g({\bf w}). \]
+
+
+  If ${\bf A} = I$, $\alpha_i = 1$ for all $i$, and $\lambda_1 = \lambda_2 = 1$, then
+   \begin{enumerate}[label=(\Alph*)]
+     \item Both the loss functions are identical i.e., ${\cal L}_1 = {\cal L}_2$ % Ans
+    \item The optima of the first objective ${\bf w}_1^*$ is same as the optima of ${\cal L}_2$, i.e., ${\bf w}_2^*$ % Ans
+    \item At the optima,  value of the losses are same. i.e., ${\cal L}_1^* = {\cal L}_2^*$ % Ans
+    \item ${\cal L}_1$ is a scalar and ${\cal L}_2$ is a vector
+    \item none of the above   % None
+     \end{enumerate}
+\end{frame}
+
+\begin{frame}
+\section{}
+  (use notations  and conventions from the class) Consider the problem of linear regression where we minimize the loss
+  \[{\cal L}_1 = \frac{1}{N}\sum_{i=1}^N \alpha_i (y_i - {\bf w}^T{\bf x}_i)^2 + \lambda_1 g({\bf w})\] where $g()$ is a regularization term. We also write the loss in matrix form as
+  \[ {\cal L}_2 = \frac{1}{N} [Y-{\bf X}{\bf w}]^TA[Y-{\bf X}{\bf w}] + \lambda_2 g({\bf w}). \]
+
+
+  If ${\bf A} = I$, $\alpha_i = 2$ for all $i$, and $\lambda_1 = \lambda_2 = 0$, then
+    \begin{enumerate}[label=(\Alph*)]
+     \item Both the loss functions are identical i.e., ${\cal L}_1 = {\cal L}_2$
+     \item The optima of the first objective ${\bf w}_1^*$ is same as the optima of ${\cal L}_2$, i.e., ${\bf w}_2^*$  % Ans
+     \item At the optima, value of the losses are same. ${\cal L}_1^* = {\cal L}_2^*$
+     \item ${\cal L}_1$ is a scalar and ${\cal L}_2$ is a vector
+     \item none of the above    % None
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}
+\section{}
+  (use notations  and conventions from the class) Consider the problem of linear regression where we minimize the loss
+  \[{\cal L}_1 = \frac{1}{N}\sum_{i=1}^N \alpha_i (y_i - {\bf w}^T{\bf x}_i)^2 + \lambda_1 g({\bf w})\] where $g()$ is a regularization term. We also write the loss in matrix form as
+  \[ {\cal L}_2 = \frac{1}{N} [Y-{\bf X}{\bf w}]^TA[Y-{\bf X}{\bf w}] + \lambda_2 g({\bf w}). \]
+
+
+  If ${\bf A} = I$, $\alpha_i = 1$ for all $i$, and $\lambda_1 \neq \lambda_2 \neq 0$, then
+    \begin{enumerate}[label=(\Alph*)]
+     \item The optimal parameters ${\bf w}^*$ is independent of $\lambda_i$.
+     \item The larger the lambda, the better the solution.
+     \item The smaller the lambda, the better the solution
+     \item When lambda is nonzero (positive), loss will increase (since $g(w)$ is also positive in practice), better to use $\lambda=0$.
+     \item None of the above.   % Ans   % None
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}
+\section{}
+  (use notations  and conventions from the class) Consider the problem of linear regression where we minimize the loss
+  \[{\cal L}_1 = \frac{1}{N}\sum_{i=1}^N \alpha_i (y_i - {\bf w}^T{\bf x}_i)^2 + \lambda_1 g({\bf w})\] where $g()$ is a regularization term. We also write the loss in matrix form as
+  \[ {\cal L}_2 = \frac{1}{N} [Y-{\bf X}{\bf w}]^TA[Y-{\bf X}{\bf w}] + \lambda_2 g({\bf w}). \]
+
+
+  See ${\cal L}_2$ closely,
+     \begin{enumerate}[label=(\Alph*)]
+       \item When $A$ is a diagonal matrix, this is equivalent to weighing each sample independently.   % Ans
+      \item When $A$ is not a  diagonal matrix, this loss does not make any sense. Don't use.
+      \item When $A$ is PD, we can do cholesky decomposition of $A$ as $LL^T$ and an equivalent formulation is possible in ${\cal L}_1$ is each sample getting transformed as ${\bf L}^T{\bf x}_i$ (as in LMNN/Metric Learning)   % Ans
+      \item When $A$ is a rank deficient matrix, an equivalent formulation is possible in ${\cal L}_1$ with a dimensionality reduction (this could be proved with eigen decomposition).   % Ans
+      \item None of the above   % None
+     \end{enumerate}
+\end{frame}

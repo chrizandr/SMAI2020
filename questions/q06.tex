@@ -1,0 +1,73 @@
+\begin{frame}
+\section{}
+  Consider a vocabulary of size $d$. One hot representation of a word $i$ is ``1'' at the location
+  (index) corresponding to that word and zero else where.
+  Given a document that contains $P$ words,  ${\bf w_1, \ldots, w_P}$, we compute
+  \[ {\bf x} = \sum_{i=1}^P {\bf w}_i \]
+  Then,
+    \begin{enumerate}[label=(\Alph*)]
+      \item ${\bf x}$ is the histogram of the words, with $x_i$ as the frequency of $i$ th word. % Ans
+      \item ${\bf x}$ is the probability distribution with $x_i$ as the probability of words in that document.
+      \item ${\bf x}$ is in $R^d$ independnet of the number of words in the document. % Ans
+      \item ${\bf x}$ is in $R^P$ independent of the vocabulary size.
+      \item $\sum_{i} {x}_i$ is $P$ ($x_i$ is the $i$ th element of ${\bf x}$) % Ans
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}
+\section{}
+  Consider a document is represented by a histogram of the words in the document. ${\bf h}$. i.e., $h_i$ is the
+  number of occurrence of the $i$ th word in the document.
+
+  We define a linguistic operation: Paraphrasing (P1). P1 is defined as permuting sentences in a document and rewriting a sentence by permuting the words.
+     \begin{enumerate}[label=(\Alph*)]
+        \item ${\bf h}$ is invariant to the P1 % Ans
+        \item ${\bf h}$ is not invariant to the P1
+        \item ${\bf h}$ is invariant under in which order the vocabulary is constructed (eg. "a to z" or "z to a"
+        \item a Euclidean distance computed over ${\bf h}_i$ and ${\bf h}_j$ is invariant under in which order the vocabulary is constructed (eg. "a to z" or "z to a".)
+     \end{enumerate}
+\end{frame}
+
+\begin{frame}
+\section{}
+  Consider a document is represented by a histogram of the words in the document ${\bf h}$ i.e., $h_i$ is the
+  number of occurrence of the $i$ th word in the document.
+
+  We define a linguistic operation: Paraphrasing (P2). P2 is defined as replacing a set of words by their synonyms.
+    \begin{enumerate}[label=(\Alph*)]
+       \item ${\bf h}$ is invariant to the P2
+       \item ${\bf h}$ is not invariant to the P2 % Ans
+       \item ${\bf h}$ is invariant under in which order the vocabulary is constructed (eg. "a to z" or "z to a"
+       \item a Euclidean distance computed over ${\bf h}_i$ and ${\bf h}_j$ is invariant under in which order the vocabulary is constructed (eg. "a to z" or "z to a")
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}
+\section{}
+  A professor suspected that students while submiting home works are doing the paraphasing operations i.e., both P1 and P2. This resulted in
+  failure of  some similarity tests.
+
+  Professor designs a $d\times d$  word similarity matrix ${\bf S}$ such that ${\bf S}_{ij} = {\bf S}_{ji} = 1$ if words $i$ and $j$ are synonyms and zero else. (Note: $d$ is the size of vocabulary).
+
+  Now to compare two documents, professor multiplies the histogram representations by ${\bf S}$.
+  \[ {\bf h}_i^\prime = {\bf S}{\bf h}_i  \](Note: ${\bf h}_i^\prime$ is the new representation. Also, note, after multiplying with the ${\bf S}$, the dimension does not change)
+    \begin{enumerate}[label=(\Alph*)]
+     \item the new representation is invariant under the operation$P1$ and  $P2$. (i.e., All the plagiarism now will be detected.) % Ans
+     \item the new representation is not invariant for $P2$ and it does not help.
+     \item the new representation helps for detecting people who have paraphrased with P2. But now it fails for the documents that were not paraphrased (like the original ones/sincere students!).
+     \item the idea is worth, but then ${\bf S}$ should not have made symmetric. with only one of ${\bf S}_{ij}$ or ${\bf S}_{ji}$ as 1. The method could have worked as expected.
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}
+\section{}
+  We want to compare two documents $i$ and $j$ which are represented as histogram (popular known as bag of words) of words $h_i$ and $h_j$.
+
+  Here is what four students argued:
+     \begin{enumerate}[label=(\Alph*)]
+      \item histograms should be normalized by dividing by the number of words in the document so that the comparison operation becomes ``some what invariant'' to another linguistic operation: "summarization". % Ans
+      \item Cosine distance is a popular distance to compare two documents using this  representation. % Ans
+      \item Since these are probability distributions, KL-Divergence  (may be a symmetric one) is an ideal candidate to compare. % Ans
+      \item we should remove the stop words (common words in the language) from the sentence so that the comparison will be more useful. Two documents have the same number of `the' does not mean any useful similarity between them. % Ans
+     \end{enumerate}
+\end{frame}

@@ -6,6 +6,7 @@ import string
 import json
 import pandas as pd
 import numpy as np
+import sys
 
 
 class Assignment(object):
@@ -47,23 +48,27 @@ class Assignment(object):
                     q_obj.add_content(l)
                 elif frame_flag and enum_flag:
                     if "\\item" in l:
-                        q_obj.add_options(l, "% Ans" in l)
+                        q_obj.add_options(l, "% Ans" in l, "% None" in l)
                 else:
                     continue
 
-    def gen_versions(self, num_versions):
+    def gen_versions(self, num_versions, shuffle_question=True):
         assignment = self._gen_json()
-        self.split_rolls(num_versions)
+        assigned_students = self.split_rolls(num_versions)
         for copy_id in range(num_versions):
             frames = []
-            random.shuffle(self.questions)
+            if shuffle_question:
+                random.shuffle(self.questions)
+
             doc_name = "main-{}-{}.tex".format(self.id_, copy_id)
             q_name = "q-{}-{}.tex".format(self.id_, copy_id)
 
             for q_num, q in enumerate(self.questions):
                 q.randomize()
                 frames.append(q.pprint())
-                assignment["questions"].append(q.json(self.id_, q_num, copy_id, doc_name, self.start_time, self.end_time))
+                assignment["questions"].append(q.json(self.id_, q_num, copy_id,
+                                                      doc_name, self.start_time, self.end_time,
+                                                      assigned_students[copy_id]))
 
             self._gen_question_doc(q_name, frames)
             self._gen_main_doc(doc_name, q_name)
@@ -89,11 +94,12 @@ class Assignment(object):
 
         idx = np.linspace(0, len(emails), num_versions+1)
 
+        assigned_students = []
         for copy_id in range(num_versions):
-            fname = "rolls-{}-{}.csv".format(self.id_, copy_id)
-            with open(os.path.join(self.output, fname), "w") as f:
-                f.write(",\n".join(emails[int(idx[copy_id]): int(idx[copy_id+1])]) + ",")
+            assigned_students.append(emails[int(idx[copy_id]): int(idx[copy_id+1])])
+        # pdb.set_trace()
         print("Split roll numbers into {} groups".format(num_versions))
+        return assigned_students
 
     def _gen_main_doc(self, doc_name, q_name):
         content = "\\documentclass[aspectratio=43]{beamer}\n" +\
@@ -122,15 +128,18 @@ class Question(object):
     def add_content(self, c):
         self.content += c + "\n"
 
-    def add_options(self, item, is_true=False):
-        self.options.append(Option(item, is_true))
+    def add_options(self, item, is_true=False, is_none=False):
+        self.options.append(Option(item, is_true, is_none))
 
     def randomize(self):
         random.shuffle(self.options)
-        return None
+        non_none_values = [x for x in self.options if not x.is_none]
+        none_values = [x for x in self.options if x.is_none]
+
+        self.options = non_none_values + none_values
 
     def pprint(self):
-        content = "\\begin{frame}\n" +\
+        content = "\\begin{frame}[shrink=20]\n" +\
                   "\\section{}\n" +\
                   "%s \n" +\
                   "\\begin{enumerate}[label=(\\Alph*)]\n" +\
@@ -141,12 +150,12 @@ class Question(object):
         content = content % (self.content, "\n".join([str(x) for x in self.options]))
         return content
 
-    def json(self, assign_id, q_num, copy_id, doc_name, start_time, end_time):
+    def json(self, assign_id, q_num, copy_id, doc_name, start_time, end_time, assigned_students):
         s = {
-            "title": "Review question",
+            "title": "Class review {}-{}".format(assign_id, q_num+1),
             "number": q_num + 1,
             "code": "q_{}_{}_{}".format(assign_id, copy_id, q_num),
-            "description": "Answer the question",
+            "description": "Class Review {}, Question {}".format(assign_id, q_num+1),
             "start_time": start_time,
             "end_time": end_time,
             "tas": [
@@ -154,15 +163,17 @@ class Question(object):
             ],
             "image": "{}-{}.png".format(doc_name.replace(".tex", ".pdf"), q_num),
             "marks": 1,
-            "options": [x.json(i) for i, x in enumerate(self.options)]
+            "options": [x.json(i) for i, x in enumerate(self.options)],
+            "students": assigned_students
         }
         return s
 
 
 class Option(object):
-    def __init__(self, content, is_true):
+    def __init__(self, content, is_true, is_none):
         self.content = content
         self.is_true = is_true
+        self.is_none = is_none
 
     def __repr__(self):
         return self.content.strip()
@@ -185,7 +196,11 @@ def make_assignment(args):
                             args.start_time,
                             args.end_time,
                             args.roll_nums)
-    assignment.gen_versions(args.num_versions)
+    if args.shuffle_question not in ["True", "False"]:
+        parser.print_help()
+        sys.exit(1)
+    shuffle_question = args.shuffle_question == "True"
+    assignment.gen_versions(args.num_versions, shuffle_question)
     pass
 
 
@@ -198,6 +213,7 @@ if __name__ == "__main__":
     parser.add_argument('--start_time', type=str, help="Start time")
     parser.add_argument('--end_time', type=str, help="End time")
     parser.add_argument('--roll_nums', default="rolls.csv", type=str, help="CSV containing the roll number and emails of students")
+    parser.add_argument('--shuffle_question', default="True", type=str, help="Shuffle question order, [True or False]")
     args = parser.parse_args()
 
     make_assignment(args)
