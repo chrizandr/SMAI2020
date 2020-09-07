@@ -52,13 +52,13 @@ class Assignment(object):
                 else:
                     continue
 
-    def gen_versions(self, num_versions, shuffle_question=True):
+    def gen_versions(self, num_versions, shuffle_question=True, shuffle_list=None):
         assignment = self._gen_json()
         assigned_students = self.split_rolls(num_versions)
         for copy_id in range(num_versions):
             frames = []
             if shuffle_question:
-                random.shuffle(self.questions)
+                self._shuffle_questions(shuffle_list)
 
             doc_name = "main-{}-{}.tex".format(self.id_, copy_id)
             q_name = "q-{}-{}.tex".format(self.id_, copy_id)
@@ -86,6 +86,18 @@ class Assignment(object):
             "questions": []
         }
         return s
+
+    def _shuffle_questions(self, shuffle_list):
+        if len(shuffle_list) == 0:
+            shuffle_list = list(range(len(self.questions)))
+
+        shuffled_indices = shuffle_list.copy()
+        random.shuffle(shuffled_indices)
+        map = {o: n for o, n in zip(shuffle_list, shuffled_indices)}
+        new_order = [self.questions[i] if i not in shuffle_list else self.questions[map[i]]
+                     for i in range(len(self.questions))]
+
+        self.questions = new_order
 
     def split_rolls(self, num_versions):
         data = pd.read_csv(self.roll_nums)
@@ -132,10 +144,9 @@ class Question(object):
         self.options.append(Option(item, is_true, is_none))
 
     def randomize(self):
-        random.shuffle(self.options)
         non_none_values = [x for x in self.options if not x.is_none]
         none_values = [x for x in self.options if x.is_none]
-
+        random.shuffle(non_none_values)
         self.options = non_none_values + none_values
 
     def pprint(self):
@@ -200,7 +211,7 @@ def make_assignment(args):
         parser.print_help()
         sys.exit(1)
     shuffle_question = args.shuffle_question == "True"
-    assignment.gen_versions(args.num_versions, shuffle_question)
+    assignment.gen_versions(args.num_versions, shuffle_question, args.shuffle_list)
     pass
 
 
@@ -214,6 +225,8 @@ if __name__ == "__main__":
     parser.add_argument('--end_time', type=str, help="End time")
     parser.add_argument('--roll_nums', default="rolls.csv", type=str, help="CSV containing the roll number and emails of students")
     parser.add_argument('--shuffle_question', default="True", type=str, help="Shuffle question order, [True or False]")
+    parser.add_argument('--shuffle_list', default=[], nargs='+', type=int,
+                        help='List of questions that can be shuffled, if not given and --shuffle_question is True all will be shuffled')
     args = parser.parse_args()
 
     make_assignment(args)

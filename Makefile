@@ -8,15 +8,16 @@ endif
 num_versions = 4
 output = latex/
 roll_nums = smai_students2.csv
+timestamp = $$(date --iso-8601=seconds)
 
 question_file = questions/q07.tex
-assignment_id = 7
-start_time = 2020-09-04T09:00:15+05:30
-end_time = 2020-09-04T09:40:15+05:30
+assignment_id = 8
+start_time = 2020-09-07T09:00:15+05:30
+end_time = 2020-09-07T09:40:15+05:30
 shuffle_question = True
+shuffle_list = 1 2 3 4
 
-
-all: create-build clean parse images package
+all: create-build clean parse images package backup
 
 create-build:
 	mkdir -p build
@@ -51,10 +52,13 @@ images: beamer
 package:
 	zip -j assignment.zip build/images/*.png latex/assignment.json
 
+backup:
+	cp assignment.zip "archive/assignment_$(assignment_id)_$(timestamp).zip"
+
 parse:
 	python3 parser.py --num_versions $(num_versions) --question_file $(question_file) --output $(output) \
 	--assignment_id $(assignment_id) --start_time $(start_time) --end_time $(end_time) --roll_nums $(roll_nums) \
-	--shuffle_question $(shuffle_question)
+	--shuffle_question $(shuffle_question) --shuffle_list $(shuffle_list)
 
 sync: clean
 	git add .
