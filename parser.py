@@ -217,7 +217,7 @@ def make_assignment(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Generate variations of the questions')
-    parser.add_argument('--num_versions', default=3, type=int, help='Number of versions to generate')
+    parser.add_argument('--num_versions', default=1, type=int, help='Number of versions to generate')
     parser.add_argument('--question_file', default="questions/sample.tex", type=str, help='File containing the questions')
     parser.add_argument('--output', default="latex/", help="Path to output folder")
     parser.add_argument('--assignment_id', default=0, type=int, help="Assignment number")

@@ -1,0 +1,70 @@
+\begin{frame}
+\section{}
+  Given a set of 2D points $X$ on a line that makes 45 degree to the x-axis:
+  \[ X = \{ [1,1]^T, [2,2]^T, [3,3]^, [4,4]^T, [5,5]^T \}\]
+  We compute the covariance matrix, and its eigen values and eigen vectors. Then:
+
+    \begin{enumerate}[label=(\Alph*)]
+      \item  $\lambda_2 = 0$    % Ans
+      \item  $\lambda_1 = \lambda_2$
+      \item  $\lambda_1 = -1$
+      \item  $\Sigma$ is singular   % Ans
+      \item none of the above   % None
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}
+\section{}
+  Given a set of 2D points $X$ on a line that makes 45 degree to the x-axis:
+  \[ X = \{  [-2,2]^T, [-3,3]^, [-4,4]^T, [-5,5]^T [-6,6]^T \}\]
+  We compute the covariance matrix, and its eigen values and eigen vectors. Then:
+  \begin{enumerate}[label=(\Alph*)]
+     \item  $\lambda_2 = 0$    % Ans
+     \item  $\lambda_1 = \lambda_2$
+     \item  $\lambda_1 = -1$
+     \item  $\Sigma$ is singular    % Ans
+     \item none of the above     % None
+     \end{enumerate}
+\end{frame}
+
+\begin{frame}
+\section{}
+  Given a set of 2D points $X$ on the vertical line $x_1=5$,
+   \[ X = \{ [5,1]^T, [5,2]^T, [5,3]^, [5,4]^T, [5,5]^T \}\]
+  We now add an additional point $[4,3]^T$ to $X$.
+  We compute the covariance matrix, and its eigen values and eigen vectors. Then:
+    \begin{enumerate}[label=(\Alph*)]
+     \item $\lambda_1 \geq \lambda_2$   % Ans
+     \item ${\bf u}_1$ and ${\bf u}_2$ are nearly orthogonal, but not perfectly orthogonal.
+     \item  $\Sigma$ is singular
+     \item  $\Sigma$ is diagonal    % Ans
+     \item None of the above.   % None
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}
+\section{}
+  Given a set of 2D points $X$ on the vertical line $x_2=5$,
+   \[ X = \{ [1,5]^T, [2,5]^T, [3,5]^, [4,5]^T, [5,5]^T \}\]
+  We compute the covariance matrix, and its eigen values and eigen vectors. Then:
+    \begin{enumerate}[label=(\Alph*)]
+       \item $\lambda_1 \geq \lambda_2$   % Ans
+       \item ${\bf \mu}$ is on the same line.   % Ans
+       \item  $\Sigma$ is singular    % Ans
+       \item  $\Sigma$ is diagonal    % Ans
+       \item None of the above    % None
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}
+\section{}
+  Set $X$ has 10 points. 5 of them are on a line that makes 45 degrees with the $x_1$ axis and another 5 from on a line that makes 135 degrees with the $x_1$ axis.
+  We compute the covariance matrix, and its eigen values and eigen vectors. Then:
+     \begin{enumerate}[label=(\Alph*)]
+      \item $\lambda_1 = \lambda_2 \neq 0$
+      \item $\Sigma$ is singular
+      \item $\Sigma$ is diagonal
+      \item ${\bf \mu}$ is on either of these lines.
+      \item None of the above   % Ans   % None
+     \end{enumerate}
+\end{frame}

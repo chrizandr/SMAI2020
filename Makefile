@@ -10,22 +10,19 @@ output = latex/
 roll_nums = smai_students2.csv
 timestamp = $$(date --iso-8601=seconds)
 
-question_file = questions/q08.tex
-assignment_id = 9
-start_time = 2020-09-07T10:00:15+05:30
-end_time = 2020-09-07T19:00:15+05:30
+question_file = questions/q09.tex
+assignment_id = 10
+start_time = 2020-09-09T09:00:15+05:30
+end_time = 2020-09-09T09:40:15+05:30
 shuffle_question = True
-shuffle_list = 1 2 3 4
+shuffle_list = 0 1 2 3 4
 
 all: create-build clean parse images package backup
 
 create-build:
 	mkdir -p build
 
-beamer: create-build
-	# pandoc -s main.tex -t commonmark -o build/content.md
-	# pandoc -t beamer -s build/content.md -o generated/beamer-content.tex
-	# xelatex -output-directory build/ generated/beamer-content.tex
+beamer:
 	for f in latex/main*.tex; do \
 		xelatex -output-directory build/ $$f; \
 	done
