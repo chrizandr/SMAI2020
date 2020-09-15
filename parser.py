@@ -52,6 +52,17 @@ class Assignment(object):
                 else:
                     continue
 
+    def gen_key(self):
+        doc_name = "key-{}.tex".format(self.id_)
+        q_name = "q_key-{}.tex".format(self.id_)
+        frames = []
+
+        for q_num, q in enumerate(self.questions):
+            frames.append(q.pprint(key=True))
+            self._gen_question_doc(q_name, frames)
+            self._gen_main_doc(doc_name, q_name)
+        print("Generated key of Assignment {}".format(self.id_))
+
     def gen_versions(self, num_versions, shuffle_question=True, shuffle_list=None):
         assignment = self._gen_json()
         assigned_students = self.split_rolls(num_versions)
@@ -149,7 +160,7 @@ class Question(object):
         random.shuffle(non_none_values)
         self.options = non_none_values + none_values
 
-    def pprint(self):
+    def pprint(self, key=False):
         content = "\\begin{frame}[shrink=20]\n" +\
                   "\\section{}\n" +\
                   "%s \n" +\
@@ -157,8 +168,8 @@ class Question(object):
                   "%s \n" +\
                   "\\end{enumerate}\n" +\
                   "\\end{frame}\n"
-
-        content = content % (self.content, "\n".join([str(x) for x in self.options]))
+        options = [x.key_version() if key else str(x) for x in self.options]
+        content = content % (self.content, "\n".join(options))
         return content
 
     def json(self, assign_id, q_num, copy_id, doc_name, start_time, end_time, assigned_students):
@@ -199,6 +210,16 @@ class Option(object):
         }
         return s
 
+    def key_version(self):
+        if self.is_true:
+            text = self.content.replace("% Ans", "")
+            text = text.replace("% None", "")
+            text = text.replace("\\item", "")
+            content = "\\item \\textbf{[Ans]} %s" % text
+            return content
+        else:
+            return str(self)
+
 
 def make_assignment(args):
     assignment = Assignment(args.question_file,
@@ -211,6 +232,8 @@ def make_assignment(args):
         parser.print_help()
         sys.exit(1)
     shuffle_question = args.shuffle_question == "True"
+
+    assignment.gen_key()
     assignment.gen_versions(args.num_versions, shuffle_question, args.shuffle_list)
     pass
 

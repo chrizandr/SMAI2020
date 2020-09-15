@@ -14,10 +14,10 @@ question_file = questions/q10.tex
 assignment_id = 11
 start_time = 2020-09-11T09:00:15+05:30
 end_time = 2020-09-11T09:40:15+05:30
-shuffle_question = True
+shuffle_question = False
 shuffle_list = 0 1 2 3 4
 
-all: create-build clean parse images package backup
+all: create-build clean parse key images package backup
 
 create-build:
 	mkdir -p build
@@ -46,11 +46,20 @@ images: beamer
   	convert -density 192 build/`basename $$f` -quality 100 build/images/`basename $$f`-%d.png; \
   done
 
+key:
+	for f in latex/key*.tex; do \
+		xelatex -output-directory build/ $$f; \
+	done
+
 package:
 	zip -j assignment.zip build/images/*.png latex/assignment.json
 
+
 backup:
 	cp assignment.zip "archive/assignment_$(assignment_id)_$(timestamp).zip"
+	for f in build/key*.pdf; do \
+		cp $$f "archive/keys/`basename $$f`_$(timestamp).pdf"; \
+	done
 
 parse:
 	python3 parser.py --num_versions $(num_versions) --question_file $(question_file) --output $(output) \
