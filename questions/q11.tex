@@ -1,0 +1,75 @@
+\begin{frame}
+\section{}
+  Consider a perceptron algorithm (batch mode) implementation with initialization ${\bf w}^0$ as random initialization learning rate $\eta $ as 0.1 and termination criteria as ``if $||{\bf w}^{k+1} - {\bf w}^k||_2^2 <10^{-6}$, terminate".
+
+  Consider a training set of 5 positive and 5 negative samples. They are linearly separable. We also have 10 test samples (5 each from both classes). They are also linearly separable.
+    \begin{enumerate}[label=(\Alph*)]
+      \item Perceptron algorithm will converge.   % Ans
+      \item Perceptron algorithm will not converge.
+      \item Error (number of Mis-classification) on the training data is guaranteed to be zero.   % Ans
+      \item Error (number of Mis- classification) on the test data is guaranteed to be zero.
+      \item none of the above    % None
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}
+\section{}
+  Consider a perceptron algorithm (batch mode) implementation with initialization ${\bf w}^0$ as random initialization learning rate $\eta $ as 0.1 and  termination criteria as ``if $||{\bf w}^{k+1} - {\bf w}^k||_2^2 <10^{-6}$, terminate".
+
+  Consider a training set of 5 positive and 5 negative samples. They are \underline{not} linearly separable. We also have 10 test samples (5 each from both classes). They are  linearly separable.
+     \begin{enumerate}[label=(\Alph*)]
+      \item This algorithm will converge.
+      \item This algorithm will not converge.   % Ans
+      \item Error (number of Mis-classification) on the training data is guaranteed to be zero.
+      \item Error (number of Mis- classification) on the test data is guaranteed to be zero.
+      \item none of the above   % None
+     \end{enumerate}
+\end{frame}
+
+\begin{frame}
+\section{}
+  Consider a perceptron algorithm (batch mode) implementation with initialization ${\bf w}^0$ as random initialization learning rate $\eta $ as 0.1 and termination criteria as ``if $||{\bf w}^{k+1} - {\bf w}^k||_2^2 <10^{-6}$, terminate".
+
+  In each iteration, we modify the learning rate as $\eta^{k+1} \leftarrow 0.8 \eta^k$.
+
+  Consider a training set of 5 positive and 5 negative samples. They are \underline{not} linearly separable.
+  Then:
+    \begin{enumerate}[label=(\Alph*)]
+     \item This algorithm will converge.    % Ans
+     \item This algorithm will not converge.
+     \item This algorithm will oscillate.
+     \item Error (number of Mis-classification) on the training data is guaranteed to be zero.
+     \item none of the above    % None
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}
+\section{}
+  Consider a perceptron algorithm (batch mode) implementation with initialization ${\bf w}^0$ as random initialization learning rate $\eta $ as 0.1 and termination criteria as ``if $||{\bf w}^{k+1} - {\bf w}^k||_2^2 <10^{-6}$, terminate".
+
+  Consider a training set of 5 positive and 5 negative samples. They are linearly separable.
+
+  We run this implementation 10 times as:
+  \begin{enumerate}[label=(\Alph*)]
+    \item This algorithm will converge to a  valid solution irrespective of the initialization. (assume learning rate fixed at 0.1)   % Ans
+   \item This algorithm will converge to the same solution irrespective of the initialization.(assume learning rate fixed at 0.1)
+   \item This algorithm will converge to a  valid solution irrespective of the learning rate (say in the range 0.05 to 0.2). (assume the initialization is same in all cases.)    % Ans
+   \item This algorithm will converge to the same solution irrespective of the learning rate (say in the range 0.05 to 0.2). (assume the initialization is same in all cases.)
+   \item This algorithm will converge to the same solution irrespective of the relative ordering of the data. (i.e., data set was shuffled across runs) (assume initialization is same in all cases and $\eta$ is fixed as $0.1$)   % Ans
+\end{enumerate}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}
+\section{}
+  Consider a perceptron algorithm (batch mode) implementation with initialization ${\bf w}^0$ as random initialization learning rate $\eta $ as 0.1 and termination criteria as ``if $||{\bf w}^{k+1} - {\bf w}^k||_2^2 <10^{-6}$, terminate".
+
+  Consider a training set of 5 positive and 5 negative samples. They are  \underline{not} linearly separable.
+      \begin{enumerate}[label=(\Alph*)]
+       \item Since the problem is non-convex, if we can find a right initialization, we will get the best solution very fast.
+       \item Irrespective of the initalization, implementation will oscillate/cycle.  % Ans
+       \item Assume the termination criteria was ``if there is no change in the misclassification rate across two iterations, terminate''. Then the implementation could have converged.    % Ans
+       \item Assume the termination criteria was ``if there is no change in the mis-classification rate across two iterations, terminate''. Even then the implementation will never converge.
+       \item None of above.    % None
+     \end{enumerate}
+\end{frame}

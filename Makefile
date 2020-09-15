@@ -10,11 +10,11 @@ output = latex/
 roll_nums = smai_students2.csv
 timestamp = $$(date --iso-8601=seconds)
 
-question_file = questions/q10.tex
-assignment_id = 11
-start_time = 2020-09-11T09:00:15+05:30
-end_time = 2020-09-11T09:40:15+05:30
-shuffle_question = False
+question_file = questions/q11.tex
+assignment_id = 12
+start_time = 2020-09-16T09:00:15+05:30
+end_time = 2020-09-16T09:40:15+05:30
+shuffle_question = True
 shuffle_list = 0 1 2 3 4
 
 all: create-build clean parse key images package backup
