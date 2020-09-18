@@ -1,0 +1,60 @@
+\begin{frame}
+\section{}
+  Consider we are using PCA to compress face images using top K eigenvectors and then we do the reconstruction. Then
+    \begin{enumerate}[label=(\Alph*)]
+      \item Compression (for face images) is lossy     % Ans
+      \item Compression (for face images) is lossless
+      \item Reconstruction will be bad for non-face images (say buildings)     % Ans
+      \item Reconstruction will be good for non-face images (say buildings)
+      \item None of these     % None
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}
+\section{}
+  Consider we are dong PCA to go from $R^2$ data to $R^1$. Consider each point is denoted by $(X_i,Y_i)$. Then in which of these situations will PCA work reasonably well:
+     \begin{enumerate}[label=(\Alph*)]
+       \item $Y_i=X_i+10$   % Ans
+      \item $Y_i=X_i+10+\epsilon_i$ where $\epsilon_i\sim N(0,1)$     % Ans
+      \item $X_i^2+Y_i^2 = 10$
+      \item $X_i^2+Y_i^2 <= 10$
+      \item None of these   % None
+     \end{enumerate}
+\end{frame}
+
+\begin{frame}
+\section{}
+  Consider we have data in $R^2$. Then the linear regression line and the PCA line
+    \begin{enumerate}[label=(\Alph*)]
+      \item will always be the same
+     \item will never be the same
+     \item can sometimes be the same    % Ans
+     \item None of these    % None
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}
+\section{}
+  We want to do PCA using gradient descent.
+  Assume that $\Sigma$ is the covariance matrix, $\eta$ is the learning rate. Then the update rule is
+    \begin{enumerate}[label=(\Alph*)]
+      \item $u_{k+1} = \eta\Sigma u_k$
+     \item $u_{k+1} = (I+\eta\Sigma)u_k$    % Ans
+     \item $u_{k+1} = (I-\eta\Sigma)u_k$
+     \item None of these    % None
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}
+\section{}
+  PCA solves this problem:
+  \[\max_u u^T \Sigma u - \lambda (u^Tu-1)\]
+  where $\Sigma$ is the covariance matrix.
+  Which of the following are true regarding PCA
+     \begin{enumerate}[label=(\Alph*)]
+       \item $\lambda$ is the variance captured by the eigen vector $u$   % Ans
+      \item Sum of variances captured by all eigenvectors is tr($\Sigma$)   % Ans
+      \item If all data points are on a line then at least one of the eigenvalues is 1
+      \item If all data points are on a line then at least one of the eigenvalues is 0    % Ans
+     \end{enumerate}
+\end{frame}
