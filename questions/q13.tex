@@ -1,0 +1,61 @@
+\begin{frame}
+\section{}
+  Consider the sigmoid function $g(z) = \frac{1}{1+ e^{-z}}$
+    \begin{enumerate}[label=(\Alph*)]
+      \item when $z=0$, $g(z) = 0.5$    % Ans
+          \item when $z$ is negative, $g(z)$ is also negative.
+          \item $g(z)$ is always in the range of $[0,1]$    % Ans
+          \item $g(z)$ is always in the range of $[-1,1]$
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}
+\section{}
+Consider the sigmoid function $g(\alpha, z) = \frac{1}{1+ e^{-\alpha z}}$
+  where $\alpha$ is a positive real number.
+     \begin{enumerate}[label=(\Alph*)]
+       \item if $\alpha_1 > \alpha_2$, then $g(\alpha_1, z) \geq g(\alpha_2, z)$ for all z
+      \item if $\alpha_1 > \alpha_2$, then $g(\alpha_1, z) \leq g(\alpha_2, z)$ for all z
+      \item if $\alpha_1 > \alpha_2$, then $g(\alpha_1, z) \geq g(\alpha_2, z)$ for all z in the range $[-1,1]$
+      \item if $\alpha_1 > \alpha_2$, then $g(\alpha_1, z) \geq g(\alpha_2, z)$ for all z in the range $[1,2]$    % Ans
+      \item if $\alpha_1 > \alpha_2$, then $g(\alpha_1, z) \geq g(\alpha_2, z)$ for all z in the range $[-2,-1]$
+     \end{enumerate}
+\end{frame}
+
+\begin{frame}
+\section{}
+Consider the sigmoid function $g(z) = \frac{1}{1+ e^{-z}}$
+   Then $g^\prime(z)$ i.e., derivative of $g(z)$ with respect to z
+    \begin{enumerate}[label=(\Alph*)]
+      \item is always positive for all values of $z$    % Ans
+      \item is constant, i.e., derivative is independent of $z$.
+      \item $\frac{1}{1+e^z}$
+      \item $\frac{e^{-z}}{(1+e^{-z})^2}$   % Ans
+      \item $g(z)(1-g(z))$    % Ans
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}
+\section{}
+Consider the sigmoid function $g(z) = \frac{1}{1+ e^{-z}}$
+   Then $1-g(z)$ is
+    \begin{enumerate}[label=(\Alph*)]
+      \item is in the range of $[0,1]$.   % Ans
+      \item $\frac{1}{1+e^z}$
+      \item $\frac{e^{-z}}{1+e^{-z}}$   % Ans
+      \item is in the range of $[-1,0]$.
+      \item is in the range of $[-1,+1]$.   % Ans
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}
+\section{}
+  You know the popular sigmoid function $g(z) = \frac{1}{1+ e^{-z}}$, and also the $\tanh(z) = \frac{e^{z} - e^{-z}}{e^{z}+e^{-z}}$
+     \begin{enumerate}[label=(\Alph*)]
+       \item $tanh(z)$ is in the range of $[0,1]$
+      \item $tanh(z)$ is in the range of $[-1,+1]$    % Ans
+      \item $tanh(z) = 2g(2z) - 1$    % Ans
+      \item when $z=0$, $tanh(z)$ is $0$.   % Ans
+      \item when $z=0$, $tanh(z)$ is $0.5$.
+     \end{enumerate}
+\end{frame}
