@@ -1,0 +1,80 @@
+\begin{frame}
+\section{}
+We know that solution to the problem of Maximize ${\bf w}^T{\bf A}{\bf w}$ subject to $||{\bf w}|| = 1$ is the eigen vector corresponding to the largest eigen value.
+
+Note that we assume that a typical eigen value computation assumes to be returning (i) eigen values arranged in non-increasing order (ii) eigen vectors have unit L2 norm.
+
+What is the solution to the problem of
+Maximize ${\bf w}^T{\bf A}{\bf w}$ subject to $||{\bf w}||^2_2 = 2$
+
+\begin{enumerate}
+\item Eigen vector correspond to the second  eigen value.
+\item Eigen vector correspond to the first eigen value.
+\item 2*{\bf u} where ${\bf u}$ is the eigen vector correspond to the first eigen value.
+\item $\sqrt{2}*{\bf u}$ where ${\bf u}$ is the eigen vector correspond to the first eigen value.   % Ans
+\item None of the above.    % None
+\end{enumerate}
+% Ans: D
+\end{frame}
+
+\begin{frame}
+\section{}
+We are working with $N$ samples each of $d$ dimension.
+Consider $N< d$
+
+\begin{enumerate}
+\item Solution to the problem of linear regression as a closed form can not be computed because the matrices are no longer compatble for multiplication.
+\item Solution to the problem of linear regression as a closed form can not be computed because the matrix can not be inverted.   % Ans
+\item Solution to the problem of ridge regularized linear regression as a closed form can not be computed because the matrix can not be inverted.
+\item None of the above   % None
+\end{enumerate}
+% Ans: B (Covariance matrix becomes non full-rank, hence singular). But on adding lambda I, it can become full rank
+\end{frame}
+
+\begin{frame}
+\section{}
+We are working with $N$ samples each of $d$ dimension.
+Consider $N\le d$
+
+\begin{enumerate}
+\item PCA can not be computed
+\item While computing Eigen values, we will see $d$ zero eigen values.
+\item While computing Eigen values, we will see at least $d-N$ zero eigen values.   % Ans
+\item While computing Eigen values, we will see at max $d-N$ zero eigen values.   % Ans
+\item We can not use eigen value/vector computation. We need to use SVD.    % Ans
+\item None of the above.    % None
+\end{enumerate}
+% BCD
+% Rank of covariance matrix will be N so that many non-zero eigen values. Rest of d-N eigenvalues are 0
+\end{frame}
+
+\begin{frame}
+\section{}
+We know the weighted Euclidean distance
+\[ \tau = [{\bf x} - {\bf y}]^T[{\bf A}][{\bf x} - {\bf y}] \]
+
+Where {\bf x} is a vector in $d$ dimension ${\bf A}$ is a square matrix
+
+\begin{enumerate}
+\item If ${\bf A}$ is a non-identity diagonal matrix. Then ``dist'' is a scaled version of Euclidean distance or ``$\tau  = \alpha$  Euclidean distance''   % Ans
+\item If $k < d$ and $A = \sum_{i=1}^k {\bf u}_i{\bf u}_i^T$, with ${\bf u}_i$s as orthonormal. Then $A$ is rank deficient and Euclidean $\tau$ can not be computed.
+\item If $k < d$ and $A = \sum_{i=1}^k {\bf u}_i{\bf u}_i^T$, with ${\bf u}_i$s as orthonormal. Then $\tau$ is equivalent to dimensioality reduction ${\bf x}^\prime = {\bf W}{\bf x}$ with ${\bf W}$ as $k\times d$ matrix with ${\bf u}_i^T$ as the $i$ th row.   % Ans
+\item When ${\bf A}$ is non-diagonal matrix, $\tau$ can not be a metric.
+\item None of the above.    % None
+\end{enumerate}
+% Ans: AC
+\end{frame}
+
+\begin{frame}
+\section{}
+Consider the covariance matrix $\Sigma$
+
+\begin{enumerate}
+\item $\Sigma$ is symmetric   % Ans
+\item $\Sigma$ is PSD   % Ans
+\item $\Sigma$ is Diagonal if the distribution is Normal.
+\item $\Sigma$ can not be Diagonal if the distribution is Normal.
+\item None of the above     % None
+\end{enumerate}
+% Ans: AB
+\end{frame}

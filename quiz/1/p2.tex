@@ -1,0 +1,72 @@
+\begin{frame}
+\section{}
+In the video titled "MSE as MLE", at 0:56, we are computing a quantity $\epsilon_i$. This quantity is
+\begin{enumerate}
+\item The perpendicular distance of the points from the line
+\item The distance of the points from the line along X-axis
+\item The distance of the points from the line along Y-axis
+\item None of these   % Ans   % None
+\end{enumerate}
+% Desc Refer https://youtu.be/XfmZ3Ap-xHI?t=56
+% Ans: D
+\end{frame}
+
+\begin{frame}
+\section{}
+In the video titled "Data from Multivariate Gaussians", at 06:39, we are talking about isocontours. Consider for a 2-D gaussian, the isocontours are circular. Suppose we have two such circles $c_1, c_2$, with radii $r_1$ and $r_2$ respectively. The probabilities of each point on $c_1$ is $p_1$ and that on $c_2$ is $p_2$. Then, given that $r_1>r_2$, we can say that
+\begin{enumerate}
+\item $p_1<p_2$
+\item $p_1>p_2$   % Ans
+\item $p_1=p_2$
+\item Cant be said from given information
+\end{enumerate}
+% Desc Refer https://youtu.be/AsQORY4_H9Q?t=399
+% Ans: B
+\end{frame}
+
+\begin{frame}
+\section{}
+In the video titled "Bias and variance", we talk about "underfitting" and "overfitting". Suppose we have are trying to fit a polynomial on a given data and we are overfitting in our problem. Which of these could be a possible solution
+\begin{enumerate}
+\item Collect more data   % Ans
+\item Increase the degree of the polynomial
+\item Decrease the degree of the polynomial   % Ans
+\item None of these   % None
+\end{enumerate}
+% Desc Refer https://youtu.be/IqdY9NWdhLk?t=274
+% Ans: AC
+\end{frame}
+
+\begin{frame}
+\section{}
+In the video titled "Decision Boundaries for Multivariate Gaussians", at 2:09, we are talking of a closed form expression for $\theta$.
+
+Given $(X\vert \omega_1)\sim N(\mu_1,\sigma_1)$ and $(X\vert \omega_2)\sim N(\mu_2,\sigma_2)$ Derive the expression for $\theta$ in a 1-dimensional scenario
+\begin{enumerate}
+\item $\theta$ is the solution of a linear equation
+\item $\theta$ is the solution of a quadratic equation    % Ans
+\item $\theta$ is the solution of an exponential equation
+\item $\theta$ cannot be calculated in closed form
+\end{enumerate}
+% Desc Refer https://youtu.be/Nc1Z41fEYhc?t=129
+% Ans: B
+\end{frame}
+
+\begin{frame}
+\section{}
+In the video titled "Regularization in Regression" we assert that L1 regularization leads to sparsity while L2 does not. We want to prove/disprove this:
+
+% Consider an experiment to prove or disprove this.
+Consider the vector $x = (1,\epsilon)\in R^2$ where $\epsilon>0$ is small. Suppose that as part of some regularization procedure, we have to reduce one of the elements of $x$ by $\delta$.
+
+This gives two options: $x_1$: $(1-\delta,\epsilon)$ and $x_2$: $(1,\epsilon-\delta)$
+\begin{enumerate}
+\item L1 norm of $x_1$ and $x_2$ are same   % Ans
+\item L2 norm of $x_1$ and $x_2$ are same
+\item Decrease in L2 norm from $x$ to $x_1$ is more than that from $x$ to $x_2$   % Ans
+\item This proves that L1 norm promotes decrease of the larger quantity in $x$ rather than reducing the smaller one to zero
+\item This proves that L2 norm promotes decrease of the larger quantity in $x$ rather than reducing the smaller one to zero   % Ans
+\end{enumerate}
+% Desc Refer https://youtu.be/DnRWPq1UGyA?t=180
+% Ans: ACE
+\end{frame}

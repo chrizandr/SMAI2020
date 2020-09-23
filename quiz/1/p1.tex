@@ -1,0 +1,480 @@
+\begin{frame}
+\section{}
+Consider we are using PCA to compress face images using top K eigenvectors and then we do the reconstruction. Then
+\begin{enumerate}
+\item Compression (for face images) is lossy    % Ans
+\item Compression (for face images) is lossless
+\item Reconstruction will be bad for non-face images (say buildings)    % Ans
+\item Reconstruction will be good for non-face images (say buildings)
+\item None of these
+\end{enumerate}
+% Ans AC
+\end{frame}
+
+\begin{frame}
+\section{}
+Consider we are dong PCA to go from $R^2$ data to $R^1$. Consider each point is denoted by $(X_i,Y_i)$. Then in which of these situations will PCA work reasonably well:
+\begin{enumerate}
+\item $Y_i=X_i+10$    % Ans
+\item $Y_i=X_i+10+\epsilon_i$ where $\epsilon_i\sim N(0,1)$   % Ans
+\item $X_i^2+Y_i^2 = 10$
+\item $X_i^2+Y_i^2 <= 10$
+\item None of these
+\end{enumerate}
+% Ans: AB (A has linear,B has near-linear relationship which will get captured in PCA)
+\end{frame}
+
+\begin{frame}
+\section{}
+Consider we have data in $R^2$. Then the linear regression line and the PCA line
+\begin{enumerate}
+\item will always be the same
+\item will never be the same
+\item can sometimes be the same   % Ans
+\item None of these
+\end{enumerate}
+% Ans: C
+\end{frame}
+
+\begin{frame}
+\section{}
+We want to do PCA using gradient descent. Then the update rule is
+\begin{enumerate}
+\item $u_{k+1} = \eta\Sigma u_k$
+\item $u_{k+1} = (I+\eta\Sigma)u_k$   % Ans
+\item $u_{k+1} = (I-\eta\Sigma)u_k$
+\item None of these
+\end{enumerate}
+Assume that $\Sigma$ is the covariance matrix, $\eta$ is the learning rate.
+% Ans: B (The +ve sign comes because we are solving a maximization problem)
+\end{frame}
+
+\begin{frame}
+\section{}
+PCA solves this problem:
+\[\max_u u^T \Sigma u - \lambda (u^Tu-1)\]
+where $\Sigma$ is the covariance matrix.
+Which of the following are true regarding PCA
+\begin{enumerate}
+\item $\lambda$ is the variance captured by the eigen vector $u$    % Ans
+\item Sum of variances captured by all eigenvectors is tr($\Sigma$)   % Ans
+\item If all data points are on a line then at least one of the eigenvalues is 1
+\item If all data points are on a line then at least one of the eigenvalues is 0    % Ans
+\end{enumerate}
+% Ans: ABD
+\end{frame}
+
+\begin{frame}
+\section{}
+Let $X=UDV^T$. Then
+\begin{enumerate}
+\item Columns of U are eigenvectors of $X^TX$
+\item Columns of V a re eigenvectors of $X^TX$    % Ans
+\item Rows of U are eigenvectors of $X^TX$
+\item Rows of V are eigenvectors of $X^TX$
+\item None of these
+\end{enumerate}
+% Ans: B
+% $X^TX = VD^2V^T \implies X^TXV=VD^2 = V\Lambda$
+\end{frame}
+
+\begin{frame}
+\section{}
+Let $X=UDV^T$. Then
+\begin{enumerate}
+\item Columns of U are eigenvectors of $XX^T$   % Ans
+\item Columns of V are eigenvectors of $XX^T$
+\item Rows of U are eigenvectors of $XX^T$
+\item Rows of V are eigenvectors of $XX^T$
+\item None of these
+\end{enumerate}
+% Ans: A
+% $XX^T = UD^2U^T \implies XX^TU=UD^2=U\Lambda$
+\end{frame}
+
+\begin{frame}
+\section{}
+Consider $X$ to be a square matrix of size $n\times n$ and $X=UDV^T$.
+\begin{enumerate}
+\item Both $X^TX$ and $XX^T$ have the same eigenvalues    % Ans
+\item Both $X^TX$ and $XX^T$ have the same eigenvectors
+\item $X$, $XX^TX$ and $XX^T$ have the same eigenvalues
+\item $D^2$ contains the eigenvalues of $X^TX$ on its diagonal    % Ans
+\item $D$ contains the eigenvalues of $X^TX$ on its diagonal
+\item None of these
+\end{enumerate}
+% Ans: AD
+\end{frame}
+
+\begin{frame}
+\section{}
+Consider $X$ to be a square matrix of size $n\times n$ and $X=UDV^T$.
+Then:
+\begin{enumerate}
+\item If rank(X) = $n$, D has all non-zero entries in diagonal.   % Ans
+\item If rank(X) = $k$, D has $k$ zeros in diagonal
+\item If rank(X) = $k$, D has $n-k$ zeros in diagonal   % Ans
+\item if rank(X) = $n$ but $\vert A \vert $ is a very small number then, D takes the form $D=diag(d_1,d_2,..,\epsilon)$ where $\epsilon$ is a very small number   % Ans
+\item None of these
+\end{enumerate}
+% Ans: ACD
+\end{frame}
+
+\begin{frame}
+\section{}
+Suppose you want to apply PCA to your data $X$
+which is in 2D and you decompose $X$ as $UDV^T$. Then,
+\begin{enumerate}
+\item PCA can be useful if all elements of D are equal
+\item PCA can be useful if all elements of D are not equal    % Ans
+\item   $D$ is not full-rank if all points in $X$ lie on a straight line    % Ans
+\item   $V$ is not full-rank if all points in $X$ lie on a straight line
+\item   $D$ is not full-rank if all points in $X$ lie on a circle
+\item None of these
+\end{enumerate}
+% Ans: BC
+\end{frame}
+
+\begin{frame}
+\section{}
+Given a set of 2D points $X$ on a line that makes 45 degree to the x-axis:
+\[ X = \{ [1,1]^T, [2,2]^T, [3,3]^, [4,4]^T, [5,5]^T \}\]
+We compute the covariance matrix, and its eigen values and eigen vectors. Then:
+
+\begin{enumerate}
+\item  $\lambda_2 = 0$    % Ans
+\item  $\lambda_1 = \lambda_2$
+\item  $\lambda_1 = -1$
+\item  $\Sigma$ is singular   % Ans
+\item none of the above
+\end{enumerate}
+% Ans: AD
+\end{frame}
+
+\begin{frame}
+\section{}
+Given a set of 2D points $X$ on a line that makes 45 degree to the x-axis:
+\[ X = \{  [-2,2]^T, [-3,3]^, [-4,4]^T, [-5,5]^T [-6,6]^T \}\]
+We compute the covariance matrix, and its eigen values and eigen vectors. Then:
+
+\begin{enumerate}
+\item  $\lambda_2 = 0$    % Ans
+\item  $\lambda_1 = \lambda_2$
+\item  $\lambda_1 = -1$
+\item  $\Sigma$ is singular   % Ans
+\item none of the above
+\end{enumerate}
+% Ans: AD
+\end{frame}
+
+\begin{frame}
+\section{}
+Given a set of 2D points $X$ on the vertical line $x_1=5$,
+\[ X = \{ [5,1]^T, [5,2]^T, [5,3]^, [5,4]^T, [5,5]^T \}\]
+We now add an additional
+point $[4,3]^T$ to $X$.
+
+We compute the covariance matrix, and its eigen values and eigen vectors. Then:
+
+
+\begin{enumerate}
+\item $\lambda_1 \geq \lambda_2$    % Ans
+\item ${\bf u}_1$ and ${\bf u}_2$ are nearly orthogonal, but not perfectly orthogonal.
+\item  $\Sigma$ is singular
+\item  $\Sigma$ is diagonal   % Ans
+\item None of the above.
+\end{enumerate}
+% Ans: AD
+\end{frame}
+
+\begin{frame}
+\section{}
+Given a set of 2D points $X$ on the vertical line $x_2=5$,
+\[ X = \{ [1,5]^T, [2,5]^T, [3,5]^, [4,5]^T, [5,5]^T \}\]
+
+
+We compute the covariance matrix, and its eigen values and eigen vectors. Then:
+
+
+\begin{enumerate}
+\item $\lambda_1 \geq \lambda_2$    % Ans
+\item ${\bf \mu}$ is on the same line.    % Ans
+\item  $\Sigma$ is singular   % Ans
+\item  $\Sigma$ is diagonal   % Ans
+\item None of the above.
+\end{enumerate}
+% Ans: ABCD
+\end{frame}
+
+\begin{frame}
+\section{}
+Set $X$ has 10 points. 5 of them are on a line that makes 45 degrees with the $x_1$ axis and another 5 from on a line that makes 135 degrees with the $x_1$ axis.
+
+We compute the covariance matrix, and its eigen values and eigen vectors. Then:
+
+\begin{enumerate}
+\item $\lambda_1 = \lambda_2 \neq 0$
+\item $\Sigma$ is singular
+\item $\Sigma$ is diagonal
+\item ${\bf \mu}$ is on either of these lines.
+\item None of the above   % Ans
+\end{enumerate}
+% Ans: E
+\end{frame}
+
+\begin{frame}
+\section{}
+(use notations  and conventions from the class) Consider the problem of linear regression where we
+minimize the loss
+\[{\cal L}_1 = \frac{1}{N}\sum_{i=1}^N \alpha_i (y_i - {\bf w}^T{\bf x}_i)^2 + \lambda_1 g({\bf w})\] where $g()$ is a regularization term. We also write the loss in matrix form as \[ {\cal L}_2 = \frac{1}{N} [Y-{\bf X}{\bf w}]^TA[Y-{\bf X}{\bf w}] + \lambda_2 g({\bf w}). \]
+
+\hrule
+If ${\cal L}_1 = {\cal L}_2$ for all $\bf{w}$, then
+\begin{enumerate}
+\item $A$ is a diagonal matrix    % Ans
+\item $A_{ij} = \alpha_i \cdot \alpha_j $
+\item $A_{ii} = \alpha_i$ else zero   % Ans
+\item $A_{ii} = \frac{1}{\alpha_i}$ else zero
+\item none of the above
+\end{enumerate}
+% Ans: AC
+\end{frame}
+
+\begin{frame}
+\section{}
+(use notations  and conventions from the class) Consider the problem of linear regression where we
+minimize the loss
+\[{\cal L}_1 = \frac{1}{N}\sum_{i=1}^N \alpha_i (y_i - {\bf w}^T{\bf x}_i)^2 + \lambda_1 g({\bf w})\] where $g()$ is a regularization term. We also write the loss in matrix form as \[ {\cal L}_2 = \frac{1}{N} [Y-{\bf X}{\bf w}]^TA[Y-{\bf X}{\bf w}] + \lambda_2 g({\bf w}). \]
+
+\hrule
+
+If ${\bf A} = I$, $\alpha_i = 1$ for all $i$, and $\lambda_1 = \lambda_2 = 1$, then
+\begin{enumerate}
+\item Both the loss functions are identical i.e., ${\cal L}_1 = {\cal L}_2$   % Ans
+\item The optima of the first objective ${\bf w}_1^*$ is same as the optima of ${\cal L}_2$, i.e., ${\bf w}_2^*$    % Ans
+\item At the optima,  value of the losses are same. i.e., ${\cal L}_1^* = {\cal L}_2^*$   % Ans
+\item ${\cal L}_1$ is a scalar and ${\cal L}_2$ is a vector
+\item none of the above
+\end{enumerate}
+% Ans: ABC
+\end{frame}
+
+\begin{frame}
+\section{}
+(use notations  and conventions from the class) Consider the problem of linear regression where we
+minimize the loss
+\[{\cal L}_1 = \frac{1}{N}\sum_{i=1}^N \alpha_i (y_i - {\bf w}^T{\bf x}_i)^2 + \lambda_1 g({\bf w})\] where $g()$ is a regularization term. We also write the loss in matrix form as \[ {\cal L}_2 = \frac{1}{N} [Y-{\bf X}{\bf w}]^TA[Y-{\bf X}{\bf w}] + \lambda_2 g({\bf w}). \]
+
+\hrule
+
+If ${\bf A} = I$, $\alpha_i = 2$ for all $i$, and $\lambda_1 = \lambda_2 = 0$, then
+\begin{enumerate}
+\item Both the loss functions are identical i.e., ${\cal L}_1 = {\cal L}_2$
+\item The optima of the first objective ${\bf w}_1^*$ is same as the optima of ${\cal L}_2$, i.e., ${\bf w}_2^*$    % Ans
+\item At the optima, value of the losses are same. ${\cal L}_1^* = {\cal L}_2^*$
+\item ${\cal L}_1$ is a scalar and ${\cal L}_2$ is a vector
+\item none of the above
+\end{enumerate}
+% Ans: B
+% L_1 = 2 * L_2 but the optimal weights remain same
+\end{frame}
+
+\begin{frame}
+\section{}
+(use notations  and conventions from the class) Consider the problem of linear regression where we
+minimize the loss
+\[{\cal L}_1 = \frac{1}{N}\sum_{i=1}^N \alpha_i (y_i - {\bf w}^T{\bf x}_i)^2 + \lambda_1 g({\bf w})\] where $g()$ is a regularization term. We also write the loss in matrix form as \[ {\cal L}_2 = \frac{1}{N} [Y-{\bf X}{\bf w}]^TA[Y-{\bf X}{\bf w}] + \lambda_2 g({\bf w}). \]
+
+\hrule
+
+If ${\bf A} = I$, $\alpha_i = 1$ for all $i$, and $\lambda_1 \neq \lambda_2 \neq 0$, then
+\begin{enumerate}
+\item The optimal parameters ${\bf w}^*$ is independent of $\lambda_i$.
+\item The larger the lambda, the better the solution.
+\item The smaller the lambda, the better the
+solution
+\item When lambda is nonzero (positive), loss will increase (since $g(w)$ is also positive in practice), better to use $\lambda=0$.
+\item None of the above.    % Ans
+\end{enumerate}
+% Ans: E
+% Ideally you would tune lambda to see what works best for given data
+\end{frame}
+
+\begin{frame}
+\section{}
+(use notations  and conventions from the class) Consider the problem of linear regression where we
+minimize the loss
+\[{\cal L}_1 = \frac{1}{N}\sum_{i=1}^N \alpha_i (y_i - {\bf w}^T{\bf x}_i)^2 + \lambda_1 g({\bf w})\] where $g()$ is a regularization term. We also write the loss in matrix form as \[ {\cal L}_2 = \frac{1}{N} [Y-{\bf X}{\bf w}]^TA[Y-{\bf X}{\bf w}] + \lambda_2 g({\bf w}). \]
+
+\hrule
+See ${\cal L}_2$ closely,
+\begin{enumerate}
+\item When $A$ is a diagonal matrix, this is equivalent to weighing each sample independently.    % Ans
+\item When $A$ is not a  diagonal matrix, this loss does not make any sense. Don't use.
+\item When $A$ is PD, we can do cholesky decomposition of $A$ as $LL^T$ and an equivalent formulation is possible in ${\cal L}_1$ is each sample getting transformed as ${\bf L}^T{\bf x}_i$ (as in LMNN/Metric Learning)   % Ans
+\item When $A$ is a rank deficient matrix, an equivalent formulatiion is possible in ${\cal L}_1$ with a dimensionality reduction (this could be proved with eigen decomposition).    % Ans
+\item None of the above
+\end{enumerate}
+% Ans: ACD
+\end{frame}
+
+\begin{frame}
+\section{}
+Consider a vocabulary of size $d$. One hot representation of a word $i$ is ``1'' at the location
+(index) corresponding to that word and zero else where.
+
+Given a document that contains $P$ words,  ${\bf w_1, \ldots, w_P}$, we compute
+\[ {\bf x} = \sum_{i=1}^P {\bf w}_i \]
+Then,
+\begin{enumerate}
+\item ${\bf x}$ is the histogram of the words, with $x_i$ as the frequency of $i$ th word.    % Ans
+\item ${\bf x}$ is in $R^d$ independent of the number of words in the document.   % Ans
+\item ${\bf x}$ is in $R^P$ independent of the vocabulary size.
+\item $\sum_{i} {x}_i$ is $P$ ($x_i$ is the $i$ th element of ${\bf x}$)    % Ans
+\end{enumerate}
+%  Ans: ABD
+\end{frame}
+
+\begin{frame}
+\section{}
+Consider a document is represented by a histogram of the words in the document. ${\bf h}$ i.e., $h_i$ is the
+number of occurrence of the $i$ th word in the document.
+
+We define a linguistic operation: Paraphrasing (P1). P1 is defined as permuting sentences in a document and rewriting a sentence by permuting the words.
+
+\begin{enumerate}
+\item ${\bf h}$ is invariant to the P1    % Ans
+\item ${\bf h}$ is not invariant to the P1
+\item ${\bf h}$ is invariant under in which order the vocabulary is constructed (eg. "a to z" or "z to a"
+\item a Euclidean distance computed over ${\bf h}_i$ and ${\bf h}_j$ is invariant under in which order the vocabulary is constructed (eg. "a to z" or "z to a".   % Ans
+\end{enumerate}
+% Ans: AD
+\end{frame}
+
+\begin{frame}
+\section{}
+Consider a document is represented by a histogram of the words in the document ${\bf h}$ i.e., $h_i$ is the
+number of occurrence of the $i$ th word in the document.
+
+We define a linguistic operation: Paraphrasing (P2). P2 is defined as replacing a set of words by their synonyms.
+
+\begin{enumerate}
+\item ${\bf h}$ is invariant to the P2
+\item ${\bf h}$ is not invariant to the P2    % Ans
+\item ${\bf h}$ is invariant under in which order the vocabulary is constructed (eg. "a to z" or "z to a"
+\item a Euclidean distance computed over ${\bf h}_i$ and ${\bf h}_j$ is invariant under in which order the vocabulary is constructed (eg. "a to z" or "z to a"
+\end{enumerate}
+% Ans: B
+\end{frame}
+
+\begin{frame}
+\section{}
+A professor suspected that students while submiting home works are doing the paraphasing operations i.e., both P1 and P2. This resulted in failure of  some similarity tests.
+
+Professor designs a $d\times d$  word similarity matrix ${\bf S}$ such that ${\bf S}_{ij} = {\bf S}_{ji} = 1$ if words $i$ and $j$ are synonyms and zero else. (Note: $d$ is the size of vocabulary).
+
+Now to compare two documents, professor multiplies the histogram representations by ${\bf S}$.
+\[ {\bf h}_i^\prime = {\bf S}{\bf h}_i  \](Note: ${\bf h}_i^\prime$ is the new representation. Also, note, after multiplying with the ${\bf S}$, the dimension does not change)
+
+\begin{enumerate}
+\item the new representation is invariant under the operation$P1$ and  $P2$. (i.e.,  All the plagiarism now will be detected.)  % Ans
+\item the new representation is not invariant for $P2$ and it does not help.
+\item the new representation helps for detecting people who have paraphrased with P2.  But now it
+fails for the documents that were not paraphrased (like the original ones/sincere students!).
+\item the idea is worth, but then ${\bf S}$ should not have made symmetric. with only one of ${\bf S}_{ij}$ or ${\bf S}_{ji}$ as 1. The method could have worked as expected.
+\end{enumerate}
+% Ans: A
+% Diagonal elements of S are 1 since every word is a synonym of itself. Hence i^th element in new representation will be the frequency of i^th word + sum of the frequencies of all synonyms of i^th word
+\end{frame}
+
+\begin{frame}
+\section{}
+We want to compare two documents $i$ and $j$ which are represented as histogram (popular known as bag of words) of words $h_i$ and $h_j$.
+
+Here is what four students argued:
+
+\begin{enumerate}
+\item histograms should be normalized by dividing by the number of words in the document so that the comparison operation becomes ``some what invariant'' to another linguistic operation: "summarization".   % Ans
+\item Cosine distance is a popular distance to compare two documents using this  representation.    % Ans
+\item we should remove the stop words (common words in the language) from the sentence so that the comparison will be more useful. Two documents have the same number of `the' does not mean any useful similarity between them.    % Ans
+\end{enumerate}
+% Ans: ABC
+\end{frame}
+
+\begin{frame}
+\section{}
+If $A=UDV^T$, then $A^TA$ is
+\begin{enumerate}
+\item $VD^2V^T$   % Ans
+\item $UD^2U^T$
+\item A square matrix   % Ans
+\item is always full rank
+\item none of the above
+\end{enumerate}
+% Ans: AC
+\end{frame}
+
+\begin{frame}
+\section{}
+Consider a matrix $A$ of size $m\times n$. Rank of $A$ is (choose one one most correct answer)
+\begin{enumerate}
+\item $\leq \min(m,n)$    % Ans
+\item $\leq \max (m,n)$
+\item $\geq \min(m,n)$
+\item $\geq \max(m,n)$
+\item $\frac{m+n}{2}$
+\end{enumerate}
+% Ans: A
+\end{frame}
+
+\begin{frame}
+\section{}
+A and B are two independent events such that $P(\overline A) = 0.4$ and $P(A \cap B) = 0.2$ Then $P(A \cap \overline B)$ is equal to
+\begin{enumerate}
+\item 0.4   % Ans
+\item 0.2
+\item 0.6
+\item 0.8
+\item None of  the above
+\end{enumerate}
+% Ans: A
+\end{frame}
+
+\begin{frame}
+\section{}
+If ${\bf A}$ is a $n\times n$ matrix, with every pair of columns orthogonal i.e., ${\bf a_i\cdot a_j = 0}\,\,\, \forall i,j$ and $||{\bf a_i}|| = 1$. Then:
+\begin{enumerate}
+\item ${\bf A^{-1}} = {\bf A}^T$.   % Ans
+\item ${\bf A}{\bf A}^T = {\bf I}$    % Ans
+\item ${\bf A}{\bf A}^T$ has only one 1 in every column and all others zero.
+\item ${\bf A}^{-1}$ has only one 1 in every column and all others zero.
+\item none of the above
+\end{enumerate}
+% Ans: AB
+\end{frame}
+
+\begin{frame}
+\section{}
+Product of Eigen values of a real square matrix is:
+\begin{enumerate}
+\item Determinant   % Ans
+\item Rank
+\item Trace
+\item non-Negative
+\item None of the above
+\end{enumerate}
+% Ans: A
+\end{frame}
+
+\begin{frame}
+\section{}
+$X\sim N(0,1)$, $Y\sim N(1,1)$ and $Z=X+Y$. Then,
+\begin{enumerate}
+\item $Z\sim N(0,2)$
+\item $Z\sim N(0,1)$
+\item $Z\sim N(1,1)$
+\item $Z\sim N(1,2)$    % Ans
+\item None of the above
+\end{enumerate}
+% Ans: D
+\end{frame}

@@ -5,19 +5,26 @@ ifeq (question,$(firstword $(MAKECMDGOALS)))
   $(eval $(Q_ARGS):;@:)
 endif
 
-num_versions = 4
+num_versions = 6
 output = latex/
 roll_nums = smai_students2.csv
 timestamp = $$(date --iso-8601=seconds)
 
-question_file = questions/q14.tex
-assignment_id = 15
-start_time = 2020-09-23T09:00:15+05:30
-end_time = 2020-09-23T09:40:15+05:30
-shuffle_question = True
-shuffle_list = 0 1 2 3 4
+quiz = True
+part = 3
+sample = 0
+assignment = quiz
 
-all: create-build clean parse key images package backup
+question_file = quiz/1/p3.tex
+assignment_id = 1
+start_time = 2020-09-23T18:50:15+05:30
+end_time = 2020-09-23T19:05:15+05:30
+shuffle_question = True
+shuffle_options = True
+# shuffle_list = 0 1 2 3 4
+shuffle_list = -1
+
+all: create-build clean parse key images package
 
 create-build:
 	mkdir -p build
@@ -28,7 +35,7 @@ beamer:
 	done
 
 clean: clean-build clean-latex
-	rm -rf assignment.zip
+	rm -rf assignment.zip quiz.zip
 
 clean-build:
 	rm -f build/*.pdf build/*.out build/*.aux build/*.log build/*.toc build/*.nav build/*.snm
@@ -36,7 +43,7 @@ clean-build:
 
 clean-latex:
 	rm -rf latex/*.tex
-	rm -rf latex/assignment.json
+	rm -rf latex/*.json
 	rm -rf latex/*.csv
 
 images: beamer
@@ -47,26 +54,32 @@ images: beamer
   done
 
 key:
-	for f in latex/key*.tex; do \
+	for f in latex/*key*.tex; do \
 		xelatex -output-directory build/ $$f; \
 	done
 
 package:
-	zip -j assignment.zip build/images/*.png latex/assignment.json
+	zip -j "$(assignment).zip" build/images/*.png latex/assignment.json
 
 
 backup:
-	cp assignment.zip "archive/assignment_$(assignment_id)_$(timestamp).zip"
-	for f in build/key*.pdf; do \
+	cp "$(assignment).zip" "archive/$(assignment)_$(assignment_id)_$(timestamp).zip"
+	for f in build/*key*.pdf; do \
 		cp $$f "archive/keys/`basename $$f`_$(timestamp).pdf"; \
 	done
 
 parse:
 	python3 parser.py --num_versions $(num_versions) --question_file $(question_file) --output $(output) \
 	--assignment_id $(assignment_id) --start_time $(start_time) --end_time $(end_time) --roll_nums $(roll_nums) \
-	--shuffle_question $(shuffle_question) --shuffle_list $(shuffle_list)
+	--shuffle_question $(shuffle_question) --shuffle_list $(shuffle_list) --quiz $(quiz) --part $(part) --sample $(sample) \
+	--shuffle_options $(shuffle_options)
 
 sync: clean
 	git add .
 	git commit -m "Syncing"
 	git push origin master
+
+# 1 - 6:30- 6:45
+# 2 - 6:40 - 6:55
+# 3 - 6:50 - 7:05
+# 4 - 7:00 - 7:15
