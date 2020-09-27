@@ -1,0 +1,72 @@
+\begin{frame}
+\section{}
+Consider a multi-class classification problem with 6 classes.
+\begin{enumerate}[label=(\Alph*)]
+\item DDAG requires $6C_2$ pairwise classifiers.    % Ans
+\item DDAG can not be designed for 6 classes since $6$ is not a power of 2.
+\item DDAG requires 15 pairwise classifiers.    % Ans
+\item Binary Hierarchical Classification  (BHC) is not applicable for this problem, since $6$ is not a power of $2$.
+\item None of the above.  % None
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\section{}
+Consider a multi-class classification problem with 8 classes.
+Let us compare the following three:
+\begin{itemize}
+   \item [A] DDAG with pairwise
+   \item [B] Fully balanced Binary Hierarchical Classifier (BHC)
+   \item [C] Majority voting on pairwise classification.
+\end{itemize}
+
+\begin{enumerate}[label=(\Alph*)]
+\item A, B, and C will require exactly the same number of classifiers.
+\item A is faster than C (A requires less compute than C) for evaluating/testing a sample.    % Ans
+\item B is faster than A and C (B requires less compute than A and C) for evaluating/testing a sample.    % Ans
+\item C is better suited for parallel evaluation than A and B   % Ans
+\item All the above statements are true.  % None
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\section{}
+Consider an 8-class classification with Binary Hierarchical classification (BHC).
+\begin{enumerate}[label=(\Alph*)]
+\item We  prefer Balanced BHC, since balanced BHCs will have the highest accuracy.
+\item If BHC is not balanced, we will have multiple leaves with the same label.
+\item If BHC is not balanced, number of classifiers will increase (compared to the balanced one)
+\item If BHC is not balanced, average time for classification (amount of compute) will increase (compared to the balanced one).    % Ans
+\item An unbalanced BHC can be converted to a BHC with no loss in accuracy with some rotate operators (just like a rotate operations in AVT Tree in a typical data structure course)
+\item All   the above.   % None
+\end{enumerate}
+\end{frame}
+
+
+\begin{frame}
+\section{}
+Consider a multi-class classification problem with K classes.
+
+We have now $K$ one vs rest linear classifiers are designed as ${\bf w_1}\ldots, {\bf w_K}$
+\begin{enumerate}[label=(\Alph*)]
+\item We prefer ``Classify as $k$ if ${\bf w_k^Tx} \geq 0$''. This will have unambiguous and correct classification.
+\item We prefer ``Classify as $k$ if $k$ is $\arg \max_k {\bf w}_k^T{\bf x}$''.   % Ans
+\item Finding ${\bf w_1}\ldots, {\bf w_K}$ can be formulated and solved as $K$ independent training problem.    % Ans
+\item Finding ${\bf w_1}\ldots, {\bf w_K}$ has to  be formulated and solved as a single training/optimization problem.
+\item We used ``Classify as $k$ if $k$ is $\arg \max_k {\bf w}_k^T{\bf x}$'' and this resulted in all samples correctly classifying with no ambiguity. If this is the case, all the ${\bf w}_i$ (say in a 2D plane) geometrically define lines that intesect at a common point.   % Ans
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\section{}
+Consider a $K$ class multi-class classifier implemented with pair-wise classifier and majority voting.
+
+Accuracy of samples in class $\omega_i$ is $\eta_i$.
+\begin{enumerate}[label=(\Alph*)]
+\item Final decision is the class that gets majority votes.   % Ans
+\item Overall accuracy is the sum of accuracies of all the $K$ classes. i.e., $\sum_{i=1}^K \eta_i$
+\item Overall accuracy is the average of accuracies of all the $K$ classes. i.e., $\frac{1}{K}\sum_{i=1}^K \eta_i$
+\item Overall accuracy is the weighted average of accuracies of all the $K$ classes, where weights are the prior probabilities of each of the classes i.e., $\frac{1}{K}\sum_{i=1}^K P(\omega_i) \eta_i$    % Ans
+\item Overall accuracy is the weighted average of accuracies of all the $K$ classes, where weights are the inverse of the prior probabilities of each of the classes i.e., $\frac{1}{K}\sum_{i=1}^K \frac{1}{P(\omega_i)} \eta_i$
+\end{enumerate}
+\end{frame}

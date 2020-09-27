@@ -5,26 +5,28 @@ ifeq (question,$(firstword $(MAKECMDGOALS)))
   $(eval $(Q_ARGS):;@:)
 endif
 
-num_versions = 6
+num_versions = 4
 output = latex/
 roll_nums = smai_students2.csv
 timestamp = $$(date --iso-8601=seconds)
 
-quiz = True
+quiz = False
 part = 3
-sample = 0
-assignment = quiz
+assignment = assignment
 
-question_file = quiz/1/p3.tex
-assignment_id = 1
-start_time = 2020-09-23T18:50:15+05:30
-end_time = 2020-09-23T19:05:15+05:30
+sample = 0
+
+question_file = questions/q16.tex
+assignment_id = 17
+start_time = 2020-09-28T09:00:15+05:30
+end_time = 2020-09-28T09:40:15+05:30
+
 shuffle_question = True
 shuffle_options = True
-# shuffle_list = 0 1 2 3 4
-shuffle_list = -1
+shuffle_list = 0 1 2 3 4
+# shuffle_list = -1
 
-all: create-build clean parse key images package
+all: create-build clean parse key images package backup
 
 create-build:
 	mkdir -p build

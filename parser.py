@@ -343,7 +343,7 @@ def make_assignment(args):
                             )
 
     assignment.gen_key(quiz=quiz, part=args.part)
-    # assignment.gen_versions(args.num_versions, shuffle_question, args.shuffle_list, shuffle_options, quiz=quiz, part=args.part, sample=args.sample)
+    assignment.gen_versions(args.num_versions, shuffle_question, args.shuffle_list, shuffle_options, quiz=quiz, part=args.part, sample=args.sample)
     values = [
         {
             "m": (int, [2, 6]),
