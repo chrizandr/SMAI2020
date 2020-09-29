@@ -16,10 +16,10 @@ assignment = assignment
 
 sample = 0
 
-question_file = questions/q16.tex
-assignment_id = 17
-start_time = 2020-09-28T09:00:15+05:30
-end_time = 2020-09-28T09:40:15+05:30
+question_file = questions/q17.tex
+assignment_id = 18
+start_time = 2020-09-30T09:00:15+05:30
+end_time = 2020-09-30T09:40:15+05:30
 
 shuffle_question = True
 shuffle_options = True

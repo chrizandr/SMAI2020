@@ -1,0 +1,72 @@
+\begin{frame}
+\section{}
+You know LDA/Fisher. Consider a two class problem with two samples $((2,3),+)$ and $((3,4),-)$. $S_w$ is regularized as
+$S_w + \sigma I$. The LDA solution ${\bf w}^*$ will be:
+\begin{enumerate}[label=(\Alph*)]
+\item along the direction of $(2,3)$ and $(3,4)$     % Ans
+\item orthogonal to the direction of $(2,3)$ and $(3,4)$
+\item neither along nor orthogonal to
+the direction of $(2,3)$ and $(3,4)$.
+\item If we have not regularized, $S_w$ would have become a NULL matrix.     % Ans
+\item None of the above.  % None
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\section{}
+You know LDA/Fisher. The goal is to:
+
+\begin{enumerate}[label=(\Alph*)]
+\item maximize inter class scatter    % Ans
+\item minimize inter class scatter
+\item maximize within class scatter
+\item minimize within class scatter   % Ans
+\item Any two of the above.  % None
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\section{}
+You know LDA/Fisher.
+There are two classes $\omega_1$ and $\omega_2$. $d=4$. Both are multivariate Gaussians with $\Sigma = I$. There are 50 and 100 samples from these two classes respectively. i.e., $N=150$.
+The rank of $S_B$ is
+\begin{enumerate}[label=(\Alph*)]
+\item 1   % Ans
+\item 2
+\item 150(N)
+\item 4 (d)
+\item None of the above   % None
+\end{enumerate}
+\end{frame}
+
+
+\begin{frame}
+\section{}
+You know LDA/Fisher. There are two classes $\omega_1$ and $\omega_2$. $d=4$. Both are multivariate Gaussians with $\Sigma = I$. There are 50 and 100 samples from these two classes respectively. i.e., $N=150$.
+
+What is the rank of $S_w$ is:
+\begin{enumerate}[label=(\Alph*)]
+\item 2
+\item 4   % Ans
+\item 1
+\item 100
+\item 150
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\section{}
+You know LDA/Fisher for two class classification problem. We know the problem as solving for:
+
+\[ S_b u = \lambda S_w u\] and the  solution as:
+
+\[ u^* = \alpha S_w^{-1} [\mu_1 - \mu_2] \]
+
+\begin{enumerate}[label=(\Alph*)]
+\item Both $S_B$ and $S_w$ are of $d\times d$.     % Ans
+\item Given the problem statement, we can write $S_b  = \lambda S_w$. Or one matrix is the scaled version of the other.
+\item There is one and only one $u$ that satisfy the problem. (or solution to the problem is unique).
+\item $u^*$ is obtained by solving our problem with an additional constraint of $||u||_2^2 =1$
+\item None of the above.    % None
+\end{enumerate}
+\end{frame}
