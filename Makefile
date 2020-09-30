@@ -5,26 +5,27 @@ ifeq (question,$(firstword $(MAKECMDGOALS)))
   $(eval $(Q_ARGS):;@:)
 endif
 
-num_versions = 4
+num_versions = 6
 output = latex/
 roll_nums = smai_students2.csv
 timestamp = $$(date --iso-8601=seconds)
 
-quiz = False
-part = 3
-assignment = assignment
+quiz = True
+part = 1
+# assignment = assignment
+assignment = quiz
 
 sample = 0
 
-question_file = questions/q17.tex
-assignment_id = 18
-start_time = 2020-09-30T09:00:15+05:30
-end_time = 2020-09-30T09:40:15+05:30
+question_file = quiz/2/p1.tex
+assignment_id = 1
+start_time = 2020-09-30T18:30:15+05:30
+end_time = 2020-09-30T18:45:15+05:30
 
 shuffle_question = True
 shuffle_options = True
-shuffle_list = 0 1 2 3 4
-# shuffle_list = -1
+# shuffle_list = 0 1 2 3 4
+shuffle_list = -1
 
 all: create-build clean parse key images package backup
 
@@ -82,6 +83,6 @@ sync: clean
 	git push origin master
 
 # 1 - 6:30- 6:45
-# 2 - 6:40 - 6:55
+# 2 - 6:45 - 7:00
 # 3 - 6:50 - 7:05
 # 4 - 7:00 - 7:15

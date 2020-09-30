@@ -1,0 +1,83 @@
+\begin{frame}
+\section{}
+Consider the following maximum likelihood estimation(MLE) objective for linear regression:
+\[\max_\theta \prod_i \frac{1}{\sqrt{2\pi}\sigma} \exp{\left(-\frac{(y_i-\theta^Tx_i)^2}{2\sigma^2}\right)}\]
+which leads to the following objective (by taking -ve log):
+\[\min_\theta \sum_i (y_i-\theta^Tx_i)^2\]
+In the MLE objective,
+\begin{enumerate}
+\item It is assumed that the residuals $(y_i-\theta^Tx_i)$ have a mean of 0     % Ans
+\item It is assumed that the residuals $(y_i-\theta^Tx_i)$ have a standard deviation of 1
+\item It is assumed that all the residuals $(y_i-\theta^Tx_i)$ have the same standard deviation     % Ans
+\item None of these     % None
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\section{}
+We saw the loss function for linear regression as
+\[J(\theta)=(Y-X\theta)^T(Y-X\theta)\]
+We saw that we get a closed form solution for $\theta$ by solving $\frac{\partial J(\theta)}{\partial \theta} = 0$:
+\[\frac{\partial}{\partial\theta}\left( Y^TY - 2Y^TX\theta + \theta^TX^TX\theta \right) = 0\]
+\[\implies-2X^TY+2X^TX\theta=0 \implies\theta=(X^TX)^{-1}X^TY\]
+Now find the closed form solution that minimizes this loss function (assume $W$ is symmetric):
+\[J(\theta)=(Y-X\theta)^TW(Y-X\theta)\]
+
+\begin{enumerate}
+\item $\theta=(X^TWX)^{-1}X^TY$
+\item $\theta=(X^TX)^{-1}X^TWY$
+\item $\theta=(X^TWX)^{-1}X^TWY$        % Ans
+\item $\theta=(X^TWX)^{-1}X^TW^{-1}Y$
+\item None of these     % None
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\section{}
+Consider the function
+\[f(w) = w^2 + w + 1\]
+We want to find the minima of the function using gradient descent. We start at $w^0=5$. What should be the learning rate $\eta$ so that we reach the minima in a single step?
+
+Hint: There may be many ways to solve this. One of the easiest is to see that the derivative of the point after 1st update is 0:
+\begin{enumerate}
+\item 1
+\item 0.5       % Ans
+\item 0.1
+\item 0.05
+\item None of these     % None
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\section{}
+Let us say that we have computed the gradient of our cost function and stored it in a vector $g$. What is the cost of one gradient descent update given the gradient?
+
+D is number of dimensions, N is the number of samples
+\begin{enumerate}
+\item $O(D)$    % Ans
+\item $O(N)$
+\item $O(ND)$
+\item $O(ND^2)$
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\section{}
+Consider the dataset of 4 points in $R^2$
+    \[X=\begin{bmatrix}
+    7 & -3 \\
+    6 & -4 \\
+    -2 & 6 \\
+    -3 & 5 \\
+    \end{bmatrix}
+\]
+Run PCA for this data (in your notebook) to go from $R^2$ to $R^1$. Then
+\begin{enumerate}
+\item 1st Principal component is $[1,1]^T$
+\item 1st Principal component is $[1,-1]^T$     % Ans
+\item The projection of 1st and 2nd points in the new subspace is at same point     % Ans
+\item The projection of 3rd and 4th points in the new subspace  is at ame point     % Ans
+\item The projection of 1st and 3rd points in the new subspace is at same point
+\item None of these     % None
+\end{enumerate}
+\end{frame}
