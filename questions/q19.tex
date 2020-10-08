@@ -1,0 +1,77 @@
+\begin{frame}
+\section{}
+Consider a two class classification problem in 2-dimension with 6 data points.
+\[ {\cal D} = \{([0,0]^T,-), ([1,0]^T,-), ([0,1]^T,-), ([1,1],+), ([2,2]^T,+), ([2,0]^T,+)  \}\]
+
+We construct a hard margin SVM solution for this problem. The decision boundary is:
+\begin{enumerate}[label=(\Alph*)]
+\item $2x_1 + 2x_2 = 3$   % Ans
+\item $-2x_1 - 2x_2 = 3$
+\item $2x_1 + 2x_2 = -3$
+\item $-2x_1 - 2x_2 = -3$   % Ans
+\item None of the above.  % None
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\section{}
+Consider a two class classification problem in 2-dimension with 6 data points.
+\[ {\cal D} = \{([0,0]^T,-), ([1,0]^T,-), ([0,1]^T,-), ([1,1],+), ([2,2]^T,+), ([2,0]^T,+)  \}\]
+
+We construct a hard margin SVM solution for this problem. The following is a support vector:
+
+\begin{enumerate}[label=(\Alph*)]
+\item $[0,0]^T$
+\item $[1,1]^T$   % Ans
+\item $[2,2]^T$
+\item $[\frac{3}{2},0]^T$
+\item $[0,2]^T$
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\section{}
+Consider a two class classification problem in 2-dimension with 6 data points.
+\[ {\cal D} = \{([0,0]^T,-), ([1,0]^T,-), ([0,1]^T,-), ([1,1],+), ([2,2]^T,+), ([2,0]^T,+)  \}\]
+
+We construct a hard margin SVM solution for this problem.
+\begin{enumerate}[label=(\Alph*)]
+\item If we remove any one of the support vectors from the training data and retrain the SVM, we will get a different solution.
+\item For this problem, there exists at least one sample, removal of it will lead to a different solution for the SVM.  % Ans
+\item There exists at least one non-support vector in ${\cal D}$, such that removal of it from the training data lead to a different solution.
+\item Given that the problem is in 2D, and binary classification, addition of a new support vector sample will make one of the existing support vectors as non-support vector.
+\item None of the above.  % None
+\end{enumerate}
+\end{frame}
+
+
+\begin{frame}
+\section{}
+Consider a two class classification problem in 2-dimension with 6 data points.
+\[ {\cal D} = \{([0,0]^T,-), ([1,0]^T,-), ([0,1]^T,-), ([1,1],+), ([2,2]^T,+), ([2,0]^T,+)  \}\]
+
+We construct a hard margin SVM solution for this problem.
+
+\begin{enumerate}[label=(\Alph*)]
+\item If we remove $[0,0]^T$ from ${\cal D}$, the margin increase.
+\item If we remove $[0,1]^T$ from ${\cal D}$, the margin increases.
+\item If we remove $[1,0]^T$ from ${\cal D}$, the margin increases.   % Ans
+\item If we remove $[1,1]^T$ from ${\cal D}$, the margin increases.   % Ans
+\item If we remove $[2,2]^T$ from ${\cal D}$, the margin increases.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\section{}
+Consider a two class classification problem in 2-dimension with 6 data points.
+\[ {\cal D} = \{([0,0]^T,-), ([1,0]^T,-), ([0,1]^T,-), ([1,1],+), ([2,2]^T,+), ([2,0]^T,+)  \}\]
+
+We construct a hard margin SVM solution for this problem.
+\begin{enumerate}[label=(\Alph*)]
+\item Addition of $([0,2]^T,+)$ will change the support vector set, but not the margin.   % Ans
+\item Addition of $([0,\frac{3}{2}]^T,+)$ will change the support vector set, and the margin.   % Ans
+\item Addition of no sample can increase the margin.
+\item Addition of $([1,2]^T,+)$ does not change the support vector set and the margin.  % Ans
+\item Addition of $([0,\frac{3}{2}]^T,+)$ will change the support vector set, but the number of support vectors will not change.
+\end{enumerate}
+\end{frame}
