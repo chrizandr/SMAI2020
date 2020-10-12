@@ -1,0 +1,80 @@
+\begin{frame}
+\section{}
+Consider a training dataset with $m$ samples in $R^d$ space. Consider a kernel which projects any sample in $R^{k}$ space.
+
+We would like to find out the Kernel SVM prediction on a test sample. What is the time complexity of this prediction
+\begin{enumerate}[label=(\Alph*)]
+\item $O(d)$
+\item $O(k)$
+\item $O(m)$
+\item $O(md)$   % Ans
+\item $O(mk)$
+\item $O(mdk)$
+\item None of these  % None
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\section{}
+Consider the primal form of soft margin SVM:
+\[ min_w \frac12w^Tw + C\sum_i \xi_i \] subject to
+$y_i(w^Tx_i+b)\geq1-\xi_i, \xi_i\geq0 \forall i$.
+
+Now find its dual form as a function of $\alpha,x,y$
+
+\begin{enumerate}[label=(\Alph*)]
+\item $w=\sum_i \alpha_ix_iy_i$ similar to hard margin SVM    % Ans
+\item $\sum_i x_iy_i = 0$ similar to hard margin SVM    % Ans
+\item Dual form objective remains same as hard margin SVM   % Ans
+\item Dual form constraints remain same as hard margin SVM
+\item None of these     % None
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\section{}
+What does the kernel $K(x,x') = \frac{x^Tx'}{\Vert x\Vert \Vert x'\Vert}$ do?
+\begin{enumerate}[label=(\Alph*)]
+\item Project all points on the line $Y=X$
+\item Project all points on a line
+\item Project all points on a unit circle   % Ans
+\item Project all points on a non-unit circle
+\item None of these  % None
+\end{enumerate}
+\end{frame}
+
+
+\begin{frame}
+\section{}
+Consider the dataset $\mathcal{D(X,Y)}$:
+
+$\mathcal{X} = \{[1,0]^T, [0,1]^T, [.5,.5]^T, [1,1]^T\}$, $\mathcal{Y} = \{+1,+1,-1,-1\}$
+
+We use the kernel $K(x,x') = \frac{x^Tx'}{\Vert x\Vert \Vert x'\Vert}$ to peform kernel SVM (hard-margin)
+\begin{enumerate}[label=(\Alph*)]
+\item $\mathcal{D}$ is linearly separable in the original feature space
+\item $\mathcal{D}$ is linearly separable in the new feature space    % Ans
+\item We see 4 unique points in the new feature space
+\item If wee add the point  $\{[2,2]^T, 1\}$ to $\mathcal{D}$, then $\mathcal{D}$ is linearly separable in the new feature space
+\item If wee add the point  $\{[2,2]^T, -1\}$ to $\mathcal{D}$, then $\mathcal{D}$ is linearly separable in the new feature space   % Ans
+\item None of these     % None
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\section{}
+Consider the dataset $\mathcal{D}$:
+
+$\mathcal{X} = \{[1,0]^T, [0,1]^T, [.5,.5]^T, [1,1]^T\}$, $\mathcal{Y} = \{+1,+1,-1,-1\}$
+
+We use the kernel $K(x,x') = \frac{x^Tx'}{\Vert x\Vert \Vert x'\Vert}$ to peform kernel SVM (hard-margin).  Then the decision boundary in the new feature space can be written as
+$w_1x_1 + w_2x_2 + w_3=0$
+\begin{enumerate}[label=(\Alph*)]
+\item $w_1=1,w_2=-1$
+\item $w_1=1,w_2=1$   % Ans
+\item $w_1=1,w_2=0$
+\item $w_1=0,w_2=1$
+\item $w_1=0,w_2=0$
+\item None of these   % None
+\end{enumerate}
+\end{frame}
