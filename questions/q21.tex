@@ -1,0 +1,88 @@
+\begin{frame}
+\section{}
+We know $\kappa({\bf p}, {\bf q})$ as $\phi({\bf p})^T\phi({\bf q})$.
+
+How we express the squared euclidean distance
+\[ d(\phi({\bf p}),\phi({\bf q})) = [\phi({\bf p})-\phi({\bf q})]^T[\phi({\bf p})-\phi({\bf q})] \] in terms of the kernels
+
+\begin{enumerate}[label=(\Alph*)]
+\item $\kappa({\bf p}, {\bf q})$
+\item $\kappa({\bf p}, {\bf p})+\kappa({\bf q}, {\bf q})  + 2 \kappa({\bf p}, {\bf q})$
+\item $\kappa({\bf p}, {\bf p})+\kappa({\bf q}, {\bf q})  - 2 \kappa({\bf p}, {\bf q})$   % Ans
+\item $(\kappa({\bf p}, {\bf p})-\kappa({\bf q}, {\bf q}))^2$
+\item None of the above.  % None
+\end{enumerate}
+% Desc This question is based on the brief review of Kernels you had seen at: https://www.dropbox.com/s/qryziuo3u143q5e/KERNEL-REVIEW.pdf?dl=0 (shared in the class last week).
+\end{frame}
+
+\begin{frame}
+\section{}
+We know $\kappa({\bf p}, {\bf q})$ as $\phi({\bf p})^T\phi({\bf q})$.
+
+Consider a data matrix  with a feature map i.e.,
+\[ {\bf X} = [\phi({\bf x}_1), \phi({\bf x}_2), \ldots \phi({\bf x}_N)] \]
+
+Then ${\bf X}^T{\bf X}$ is
+
+\begin{enumerate}[label=(\Alph*)]
+\item $N\times N$   % Ans
+\item Can not be computed since $\phi()$ can map to infinite dimension
+\item The kernel matrix ${\bf K}$ with $K_{ij} = \kappa({\bf x}_i, {\bf x}_j)$    % Ans
+\item Symmetric   % Ans
+\item None of the above     % None
+\end{enumerate}
+% Desc This question is based on the brief review of Kernels you had seen at: https://www.dropbox.com/s/qryziuo3u143q5e/KERNEL-REVIEW.pdf?dl=0 (shared in the class last week).
+\end{frame}
+
+\begin{frame}
+\section{}
+We know $\kappa({\bf p}, {\bf q})$ as $\phi({\bf p})^T\phi({\bf q})$.
+
+Consider two vectors $\phi({\bf p})$ and $\phi({\bf q})$ and their L2 normalized version as $\phi({\bf p})^\prime$ and $\phi({\bf q})^\prime$. i.e.,
+\[ \phi({\bf p})^\prime =\frac{\phi({\bf p})}{\Vert\phi({\bf p})\Vert} \]
+
+How do we compute $\kappa^\prime ({\bf p}, {\bf q}) =  (\phi({\bf p})^\prime)^T(\phi({\bf q})^\prime)$ in terms of $\kappa ({\bf p}, {\bf q}) =  (\phi({\bf p}))^T(\phi({\bf q}))$.
+
+i.e., $\kappa^\prime ({\bf p}, {\bf q}) = $
+\begin{enumerate}[label=(\Alph*)]
+\item $\frac{\kappa({\bf p}, {\bf q})}{\kappa({\bf p}, {\bf q})\kappa({\bf p}, {\bf q})}$
+\item $\frac{\kappa({\bf p}, {\bf q})}{\kappa({\bf p}, {\bf p})\kappa({\bf q}, {\bf q})}$
+\item $\frac{\kappa({\bf p}, {\bf q})}{\sqrt{{\kappa({\bf p}, {\bf q})\kappa({\bf p}, {\bf q})}}}$
+\item $\frac{\kappa({\bf p}, {\bf q})}{\sqrt{{\kappa({\bf p}, {\bf p})\kappa({\bf q}, {\bf q})}}}$    % Ans
+\item None of the above  % None
+\end{enumerate}
+% Desc This question is based on the brief review of Kernels you had seen at: https://www.dropbox.com/s/qryziuo3u143q5e/KERNEL-REVIEW.pdf?dl=0 (shared in the class last week).
+\end{frame}
+
+
+\begin{frame}
+\section{}
+We know $\kappa({\bf p}, {\bf q})$ as $\phi({\bf p})^T\phi({\bf q})$.
+
+Kernel matrix ${\bf K}$ is
+\begin{enumerate}[label=(\Alph*)]
+\item Symmetric   % Ans
+\item $d\times d$
+\item $N\times N$   % Ans
+\item Depends on $\phi()$   % Ans
+\item None of the above    % None
+\end{enumerate}
+% Desc This question is based on the brief review of Kernels you had seen at: https://www.dropbox.com/s/qryziuo3u143q5e/KERNEL-REVIEW.pdf?dl=0 (shared in the class last week).
+\end{frame}
+
+\begin{frame}
+\section{}
+Let $\mu$ be the mean of samples ${\bf x}_1, \ldots, {\bf x}_N$.
+
+Also $\tau$ be the mean of samples $\phi({\bf x}_1), \ldots, \phi({\bf x}_N)$.
+
+Let $\phi()$ be the feature map corresponding to RBF Kernel (or your more familiar quadratic kernel).
+\begin{enumerate}[label=(\Alph*)]
+\item $\mu$ and $\tau$ are identical.
+\item $\tau= \phi(\mu)$
+\item $\tau \ne \phi(\mu)$    % Ans
+\item $\mu$ and $\tau$ are different; but of same dimension.
+\item Two of the above are true.  % None
+\end{enumerate}
+% Desc This question is based on the brief review of Kernels you had seen at: https://www.dropbox.com/s/qryziuo3u143q5e/KERNEL-REVIEW.pdf?dl=0 (shared in the class last week).
+\end{frame}
