@@ -48,6 +48,8 @@ class Assignment(object):
                 if frame_flag and not enum_flag:
                     if "% Desc" in l:
                         q_obj.desc = l.replace("% Desc", "")
+                    if "% FIB" in l:
+                        q_obj.type = "FIB"
                     else:
                         q_obj.add_content(l)
                 elif frame_flag and enum_flag:
@@ -84,10 +86,11 @@ class Assignment(object):
                 for q_num, q in enumerate(self.questions):
                     if shuffle_options:
                         q.randomize()
-                    frames.append(q.pprint())
-                    assignment["questions"].append(q.json(self.id_, q_num, copy_id,
-                                                          doc_name, self.start_time, self.end_time,
-                                                          assigned_students[copy_id], quiz, part))
+                    if q.type == "MCQ":
+                        frames.append(q.pprint())
+                        assignment["questions"].append(q.json(self.id_, q_num, copy_id,
+                                                       doc_name, self.start_time, self.end_time,
+                                                       assigned_students[copy_id], quiz, part))
             else:
                 assert sample * num_versions <= len(self.questions)
                 for q_num, q in enumerate(self.questions[copy_id*sample:(copy_id+1)*sample]):
@@ -100,6 +103,13 @@ class Assignment(object):
 
             self._gen_question_doc(q_name, frames)
             self._gen_main_doc(doc_name, q_name)
+
+        frames = [q.pprint() for q in self.questions if q.type == "FIB"]
+        doc_name = "main-{}-{}.tex".format("fib", 0)
+        q_name = "q-{}-{}.tex".format("fib", 0)
+        self._gen_question_doc(q_name, frames)
+        self._gen_main_doc(doc_name, q_name)
+
         print("Generated {} versions of Assignment {}".format(num_versions, self.id_))
         with open(os.path.join(self.output, "assignment.json"), "w") as f:
             f.write(json.dumps(assignment, indent=4))
@@ -216,6 +226,7 @@ class Question(object):
         self.content = ""
         self.options = []
         self.desc = ""
+        self.type = "MCQ"
 
     def add_content(self, c):
         self.content += c + "\n"
@@ -242,21 +253,28 @@ class Question(object):
         return output
 
     def pprint(self, key=False, values=None):
-        content = "\\begin{frame}[shrink=20]\n" +\
-                  "\\section{}\n" +\
-                  "%s \n" +\
-                  "\\begin{enumerate}[label=(\\Alph*)]\n" +\
-                  "%s \n" +\
-                  "\\end{enumerate}\n" +\
-                  "\\end{frame}\n"
-        options = [x.key_version() if key else str(x) for x in self.options]
+        if self.type == "MCQ":
+            content = "\\begin{frame}[shrink=20]\n" +\
+                      "\\section{}\n" +\
+                      "%s \n" +\
+                      "\\begin{enumerate}[label=(\\Alph*)]\n" +\
+                      "%s \n" +\
+                      "\\end{enumerate}\n" +\
+                      "\\end{frame}\n"
+            options = [x.key_version() if key else str(x) for x in self.options]
 
-        if values:
-            output = self.fill_values(values)
-            options = [x.numeric_version(values) for x in self.options]
-            content = content % (output, "\n".join(options))
+            if values:
+                output = self.fill_values(values)
+                options = [x.numeric_version(values) for x in self.options]
+                content = content % (output, "\n".join(options))
+            else:
+                content = content % (self.content, "\n".join(options))
         else:
-            content = content % (self.content, "\n".join(options))
+            content = "\\begin{frame}[shrink=20]\n" +\
+                      "\\section{}\n" +\
+                      "%s \n" +\
+                      "\\end{frame}\n"
+            content = content % (self.content)
         return content
 
     def json(self, assign_id, q_num, copy_id, doc_name, start_time, end_time, assigned_students, quiz=False, part=0):

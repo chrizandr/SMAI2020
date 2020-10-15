@@ -1,0 +1,70 @@
+\begin{frame}
+\section{}
+See the Sec 3.3 (equations)
+
+Why is $a\in R^+$ written there?
+
+\begin{enumerate}[label=(\Alph*)]
+\item It could have been $a\in R^-$
+\item $a$ negative does not lead to $K$ being PSD   % Ans
+\item It is a typo.
+\end{enumerate}
+% Desc You might have read the notes on Kernels and SVMs at: https://www.dropbox.com/s/qryziuo3u143q5e/KERNEL-REVIEW.pdf?dl=0
+\end{frame}
+
+\begin{frame}
+\section{}
+See the Sec 3.3. Assume
+$\alpha_i \in R^+$; $\beta_i \in R^+$; $\kappa_i({\bf p},{\bf q})$ being a valid kernel. Also $K$ and $L$ are some positive integers.
+
+Then a new kernel $\kappa(\cdot,\cdot) = $
+\begin{enumerate}[label=(\Alph*)]
+\item $\sum_{i=1}^K \kappa_i ({\bf p},{\bf q})$ is a valid kernel.    % Ans
+\item $\prod_{i=1}^L \kappa_i ({\bf p},{\bf q})$ is a valid kernel.   % Ans
+\item $\sum_{i=1}^K \alpha_i \kappa_i ({\bf p},{\bf q})$ is a valid kernel.   % Ans
+\item $\prod_{i=1}^L \beta_i \kappa_i ({\bf p},{\bf q})$ is a valid kernel.   % Ans
+\item $\sum_{i=1}^K \alpha_i \kappa_i ({\bf p},{\bf q})$ + $\prod_{i=1}^L\beta_i \kappa_i ({\bf p},{\bf q})$ is a valid kernel    % Ans
+\end{enumerate}
+% Desc You might have read the notes on Kernels and SVMs at: https://www.dropbox.com/s/qryziuo3u143q5e/KERNEL-REVIEW.pdf?dl=0
+\end{frame}
+
+\begin{frame}
+\section{}
+See the pseudo-code for Kernel Perceptron (Algorithm 3). Assime the kernel to be
+$({\bf x}^T{\bf y})^2$
+\begin{enumerate}[label=(\Alph*)]
+\item The initialization $\alpha_i=0$ is a must. With no other initialization, this algorithm will not work (say will not converge)
+\item Step of computing Kernel Matrix (step 2) should have been in side the loop (repeat structure).
+\item Since this is now Kernelized, with any data (irrespective of whether the data is linearly separable or not), this algorithm will converge.
+\item For data that is linearly separable, this algorithm will give you a linear decision boundary.
+\item None of the above.  % None    % Ans
+\end{enumerate}
+% Desc You might have read the notes on Kernels and SVMs at: https://www.dropbox.com/s/qryziuo3u143q5e/KERNEL-REVIEW.pdf?dl=0
+\end{frame}
+
+
+\begin{frame}
+\section{}
+Look at the equation (94) related to the objective function:
+\begin{enumerate}[label=(\Alph*)]
+\item This is an L1 softmargin SVM  % Ans
+\item This is an L2 softmargin SVM
+\item There is a typo. $\xi_i$ should be replaced as $\xi_i^2$
+\item There is a typo. LHS will have to be
+$j({\bf w}{\bf \xi})$, since $\xi$ is another variable that we need to optimize.
+\item None of the above.    % None
+\end{enumerate}
+% Desc You might have read the notes on Kernels and SVMs at: https://www.dropbox.com/s/qryziuo3u143q5e/KERNEL-REVIEW.pdf?dl=0
+\end{frame}
+
+\begin{frame}
+\section{}
+Consider the decision making rule. ``one side of a line (in 2D) is +ve class and other side of a line is -ve class''  Figure 7 shows that VC dimension of a class of functions (lines) in 2D is 3.
+
+What is the VC dimension in 1D for a function class. If $x>\theta$, positive, else negative.
+
+Write your answer in the space provided.
+
+(Sample answer (possibly incorrect): 1 )
+% FIB
+\end{frame}

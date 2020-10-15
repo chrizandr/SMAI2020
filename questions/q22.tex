@@ -1,0 +1,61 @@
+\begin{frame}
+\section{}
+For Support Vector Machines:
+
+\begin{enumerate}[label=(\Alph*)]
+\item A hard margin linear SVM yields a valid (constraint satisfying) solution for any data.
+\item If the data is linearly separable, linear SVM and linear perceptron will give the same solution.
+\item maximization of ${\bf w}^T{\bf w}$ with the associated constraints is leading to the maximization of the margin.
+\item minimization of ${\bf w}^T{\bf w}$ with the associated constraints is leading to the maximization of the margin.    % Ans
+\item None of the above.  % None
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\section{}
+Kernel SVMs are:
+\begin{enumerate}[label=(\Alph*)]
+\item Always hard margin
+\item Always soft margin
+\item Can be either hard margin or soft margin    % Ans
+\item If there is a hard margin feasible, soft-margin K-SVMs eventually finds this.
+\item None of the above    % None
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\section{}
+In the context of Softmargin Linear SVMs:
+\begin{enumerate}[label=(\Alph*)]
+\item If there is a hard margin feasible, soft-margin linear SVMs always finds this.
+\item If there is a hard margin feasible, soft-margin linear SVMs can finds this with certain 'C'.    % Ans
+\item If the data is linearly separable, we should not use soft margin SVM.
+\item The larger the C, the formulation become closer and closer to hard margin SVM.    % Ans
+\item None of the above.  % None
+\end{enumerate}
+\end{frame}
+
+
+\begin{frame}
+\section{}
+Number of Support Vectors:
+\begin{enumerate}[label=(\Alph*)]
+\item is $2\times d$
+\item depends on the kernel we use.   % Ans
+\item can be as large as $N$    % Ans
+\item can be as small as 1
+\item None of the above.    % None
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\section{}
+In the context of K-SVM:
+\begin{enumerate}[label=(\Alph*)]
+\item Formulation change with kernel.
+\item Performance of the solution change with kernel.   % Ans
+\item We can use different Kernels during training and testing.
+\item If the kernel $\kappa(x,y) = x^Ty$, then K-SVM is equivalent to Linear SVM    % Ans
+\item All the above four are true.  % None
+\end{enumerate}
+\end{frame}
