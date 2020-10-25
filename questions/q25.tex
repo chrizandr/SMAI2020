@@ -1,37 +1,40 @@
 \begin{frame}
 \section{}
-We know that the VC dimension of a set of lines in 2D is 3. What is the VC dimension of a set of planes in 3D?
+About Backpropagation Algorithm:
 \begin{enumerate}[label=(\Alph*)]
-\item 3+1 = 4   % Ans
-\item 2+2 = 2
-\item $2 \times \frac{3}{4} = 6$
-\item Remains the same. i.e., 3
-\item None of the above   % None
+\item When the algorithm  is allowed to run for many (say $\infty$) iterations, the loss becomes zero.
+\item When the algorithm  is allowed to run for many (say $\infty$) iterations, the network will overfit.
+\item When the algorithm  is allowed to run for many (say $\infty$) iterations, we will reach a local minima.   % Ans
+\item When the algorithm  is allowed to run for many (say $\infty$) iterations, we will reach the same local minima, irrespective of the initialization
+\item All the above are true.  % None
 \end{enumerate}
 \end{frame}
 
 \begin{frame}
 \section{}
-We know that $\tanh(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}$. What is the derivative of $tanh(x)$
+About Backpropagation Algorithm:
+
+Which may be a really {\bf bad} termination crieria
 \begin{enumerate}[label=(\Alph*)]
-\item $1+\tanh(x)$
-\item $1- \tanh^2(x)$   % Ans
-\item $\tanh(x)(1-\tanh(x))$
-\item $1+\tanh^2(x)$
-\item None of the above   % None
+\item When no major change in loss, end.
+\item When all gradients are near zero, end.
+\item When learning rate is near zero, end.   % Ans
+\item When loss is near zero, end.
+\item All the above are terrible termination crieria.   % None
 \end{enumerate}
 \end{frame}
 
 \begin{frame}
 \section{}
-An MLP has two inputs, two hidden layers of 3 neurons each and an output of two neurons. All the neurons have biases. The number of weights (or learnable parameters) is:
+Consider an MLP getting used for a three class classification problem.
 
+Output layer has three neurons and we use a cross entropy loss.
 \begin{enumerate}[label=(\Alph*)]
-\item 24
-\item 21
-\item 29    % Ans
-\item 37
-\item None of the above  % None
+\item If the accuracy of the training data is 100\%, it implies that the loss might have been zero.
+\item If the loss is zero, implies that the MLP as a classifier has 100\% accuracy on the training data.    % Ans
+\item If the loss is zero, implies that the MLP as a classifier has 100\% accuracy on the test data.
+\item If the accuracy of the test data is 100\%, it implies that the loss computed on the training data might  have been zero.
+\item None of the above.  % None
 \end{enumerate}
 \end{frame}
 
@@ -40,7 +43,7 @@ An MLP has two inputs, two hidden layers of 3 neurons each and an output of two 
 \section{}
 Make the necessary minimal changes  (if any required) and rewrite as true sentences in the space provided. Avoid changing the words in bold.
 
-{\em A Single Layer Perceptron} {\bf can solve ExOR problem}.
+{\bf An MLP  has no activation in the  output. It has  sigmoid activity in all the hidden layers.  }{\em It can not be used to output negative values} {\bf because }{\em  sigmoid outputs in [0,1] (no negative)}
 % FIB
 \end{frame}
 
@@ -48,6 +51,7 @@ Make the necessary minimal changes  (if any required) and rewrite as true senten
 \section{}
 Make the necessary minimal changes  (if any required) and rewrite as true sentences in the space provided. Avoid changing the words in bold.
 
-{\bf Backpropagation algorithm} {\em can guarantee (always find) the optimal solution/weights} {\bf for a Multilayer Perceptron}.
+{\bf Backpropagation algorithm } {\em can be understood as an iterative optimization algorithm.}
+
 % FIB
 \end{frame}
