@@ -1,0 +1,80 @@
+\begin{frame}
+\section{}
+Remember the problem set we solved in the last class. (refer the questions and your answers if needed).
+
+We solved the Separable SVM problem in 1D for
+\[ (-1,+1), (0,-1), (+1,-1) \]
+We knew the solution:  $w$ as $-2$ and $b$ as $-1$
+
+Assume $x$ was $k$ times (say was measured in a different unit; remember the normalization of the data). For example, when $k=2$, the data will look like:
+\[ (-2,+1), (0,-1), (+2,-1) \]
+
+\begin{enumerate}[label=(\Alph*)]
+\item $w$ and $b$ will also become $k$ times.
+\item $w$ will remain the same, while $b$ will become $\frac bk$.
+\item $b$ will remain the same, while $w$ will become $\frac wk$    % Ans
+\item $w$ and $b$ will remain the same.
+\item No such systematic change is possible for $w$ and $b$. The problem will have to be solved afreash.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\section{}
+There is a popular problem called ``parity''. Consider ${\bf x}$ be d-dimensional, $d>1$ which each $x_i\in \{-1,+1\}$ and $y$ be +1 if the number of +1 in ${\bf x}$ is odd and else $-1$.0
+\begin{enumerate}[label=(\Alph*)]
+\item This problem is linearly separable.
+\item When $d=2$, this problem reduced to $ExoR$.    % Ans
+\item This is an example of a linearly non-separable problem.    % Ans
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\section{}
+Remember the problem set we solved in the last class. (refer the questions and your answers if needed).
+
+We solved the Separable SVM problem in 1D for
+\[ (-1,+1), (0,-1), (+1,-1) \]
+We knew the solution:  $w$ as $-2$ and $b$ as $-1$
+
+Consider an extension, we add some small zero mean Gaussian noise ${\cal N}(0,\sigma^2)$ to each of the samples and create 10 variations each. (total of 30 samples). (Assume $\sigma=0.5$.)
+
+We solve the SVM problem.
+\begin{enumerate}[label=(\Alph*)]
+\item We expect around 20 Support Vectors. (non zero $\alpha$s)
+\item We will have only two Support Vectors.
+\item The optimal values of $w$ and $b$ will become 10 times.
+\item The optimal values of $w$ and $b$ will remain almost the same.    % Ans
+\item Margin remains the same.
+\item None of the above.  % None
+\end{enumerate}
+\end{frame}
+
+
+\begin{frame}
+\section{}
+Remember the problem set we solved in the last class. (refer the questions and your answers if needed).
+
+Consider the ExOR problem. There are four samples and four $\alpha$s and four support vectors.
+
+We can generalize this observation as:
+
+``{\bf For any linearly non-separable problem}, {\em number of support vectors is same as number of samples.}''
+
+Make the necessary minimal changes  (if any required) and rewrite as true sentences in the space provided. Avoid changing the words in bold.
+% FIB
+\end{frame}
+
+\begin{frame}
+\section{}
+Remember the problem set we solved in the last class. (refer the questions and your answers if needed).
+
+We solved SVM for a linearly in-separable data:
+\[ (-1,+1), (0,-1), (+1,+1) \]
+and obtained:
+$\alpha_1 = \alpha_3=1$ and $\alpha_2=2$
+
+``{\bf Assume we had an additional (4th) sample $(+2,+1)$ in our data}, {\em the $\alpha$s for the first three samples, will remain the same.}''
+
+Make the necessary minimal changes  (if any required) and rewrite as true sentences in the space provided. Avoid changing the words in bold.
+% FIB
+\end{frame}
