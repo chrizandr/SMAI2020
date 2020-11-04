@@ -10,22 +10,22 @@ output = latex/
 roll_nums = smai_students2.csv
 timestamp = $$(date --iso-8601=seconds)
 
-quiz = False
-part = 4
-assignment = assignment
-# assignment = quiz
+quiz = True
+part = 0
+# assignment = assignment
+assignment = quiz
 
-sample = 0
+sample = -1
 
-question_file = questions/q28.tex
-assignment_id = 29
-start_time = 2020-11-02T09:00:15+05:30
-end_time = 2020-11-02T09:40:15+05:30
+question_file = quiz/3/
+assignment_id = 3
+start_time = 2020-11-04T09:30:15+05:30
+end_time = 2020-11-04T10:30:15+05:30
 
-shuffle_question = True
-shuffle_options = True
-shuffle_list = 0 1 2
-# shuffle_list = -1
+shuffle_question = False
+shuffle_options = False
+# shuffle_list = 0 1 2
+shuffle_list = -1
 
 all: create-build clean parse key images package backup
 
@@ -82,7 +82,7 @@ sync: clean
 	git commit -m "Syncing"
 	git push origin master
 
-# 1 - 6:30- 6:45
+# 1 - 9:30- 10:30
 # 2 - 6:45 - 7:00
 # 3 - 7:00 - 7:15
 # 4 - 7:15 - 7:30

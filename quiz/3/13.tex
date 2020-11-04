@@ -1,0 +1,28 @@
+
+\begin{frame}
+\section{}
+Consider an MLP with one hidden layer. {\bf x} is the input and ${\bf y}$ is the output. All neurons in the hidden and output have ReLU activation.
+\begin{enumerate}[label=(\Alph*)]
+\item This network is not appropriate for learning functions which can also take negative values as outputs.    % Ans
+\item This network assumes ${\bf x}$ has only positive elements.
+\item While trained with BP, this network will have all weights positive.
+\item While trained with BP, this network will have all weights non-negative.
+\item All the above.    % None
+
+\end{enumerate}
+
+\end{frame}
+
+
+\begin{frame}
+\section{}
+Consider an MLP with one hidden layer. {\bf x} is the input and ${\bf y}$ is the output. All neurons in the hidden and output have ReLU activation.
+
+\begin{enumerate}[label=(\Alph*)]
+\item This network can be reduced to ${\bf y} = {\bf W}{\bf x}$
+\item This network can be modelled as: ``Either ${\bf y} = {\bf W}_1{\bf x}$ or ${\bf y} = {\bf W}_2{\bf x}$''    % Ans
+\item If all elements of ${\bf x}$ are negative, ${\bf y} = {\bf 0}$.
+\item If ${\bf y} = {\bf 0}$ imply that at least some of the elements of ${\bf x}$ are negative.
+\item None of the above.    % None
+\end{enumerate}
+\end{frame}

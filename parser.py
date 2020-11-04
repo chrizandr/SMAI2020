@@ -12,20 +12,22 @@ import re
 
 class Assignment(object):
     def __init__(self, question_file, id_, output, start_time, end_time, roll_nums):
-        self.content = open(question_file, "r").read()
         self.id_ = id_
         self.questions = []
         self.output = output
         self.start_time = start_time
         self.end_time = end_time
         self.roll_nums = roll_nums
-        self._parse_doc()
+        self.question_file = question_file
+        if question_file.endswith(".tex"):
+            self._parse_doc(question_file)
 
-    def _parse_doc(self):
+    def _parse_doc(self, question_file):
+        self.content = open(question_file, "r").read()
+        self.questions = []
         frame_flag = False
         enum_flag = False
         q_obj = None
-
         for l in self.content.split("\n"):
             if "\\section{}" in l:
                 continue
@@ -71,44 +73,74 @@ class Assignment(object):
 
     def gen_versions(self, num_versions, shuffle_question=True, shuffle_list=None, shuffle_options=True, quiz=False, part=1, sample=0):
         assignment = self._gen_json(quiz)
-        assigned_students, _ = self.split_rolls(num_versions)
-        for copy_id in range(num_versions):
-            frames = []
-            if shuffle_question:
-                if shuffle_list == [-1]:
-                    shuffle_list = list(range(len(self.questions)))
-                self._shuffle_questions(shuffle_list)
+        if sample >= 0:
+            assigned_students, _ = self.split_rolls(num_versions)
 
-            doc_name = "main-{}-{}.tex".format(self.id_, copy_id)
-            q_name = "q-{}-{}.tex".format(self.id_, copy_id)
+            for copy_id in range(num_versions):
+                frames = []
+                if shuffle_question:
+                    if shuffle_list == [-1]:
+                        shuffle_list = list(range(len(self.questions)))
+                    self._shuffle_questions(shuffle_list)
 
-            if sample <= 0:
-                for q_num, q in enumerate(self.questions):
-                    if shuffle_options:
-                        q.randomize()
-                    if q.type == "MCQ":
+                doc_name = "main-{}-{}.tex".format(self.id_, copy_id)
+                q_name = "q-{}-{}.tex".format(self.id_, copy_id)
+
+                if sample == 0:
+                    # Generate [num_versions] sets with random ordering of question and options
+                    for q_num, q in enumerate(self.questions):
+                        if shuffle_options:
+                            q.randomize()
+                        if q.type == "MCQ":
+                            frames.append(q.pprint())
+                            assignment["questions"].append(q.json(self.id_, q_num, copy_id,
+                                                           doc_name, self.start_time, self.end_time,
+                                                           assigned_students[copy_id], quiz, part))
+                elif sample > 0:
+                    # Generate [num_versions] groups with random questions of size [sample] from a large set
+                    assert sample * num_versions <= len(self.questions)
+                    for q_num, q in enumerate(self.questions[copy_id*sample:(copy_id+1)*sample]):
+                        if shuffle_options:
+                            q.randomize()
                         frames.append(q.pprint())
                         assignment["questions"].append(q.json(self.id_, q_num, copy_id,
-                                                       doc_name, self.start_time, self.end_time,
-                                                       assigned_students[copy_id], quiz, part))
-            else:
-                assert sample * num_versions <= len(self.questions)
-                for q_num, q in enumerate(self.questions[copy_id*sample:(copy_id+1)*sample]):
-                    if shuffle_options:
-                        q.randomize()
-                    frames.append(q.pprint())
-                    assignment["questions"].append(q.json(self.id_, q_num, copy_id,
-                                                          doc_name, self.start_time, self.end_time,
-                                                          assigned_students[copy_id], quiz, part))
+                                                              doc_name, self.start_time, self.end_time,
+                                                              assigned_students[copy_id], quiz, part))
+                self._gen_question_doc(q_name, frames)
+                self._gen_main_doc(doc_name, q_name)
 
+            # No versioning for FIB
+            fibs = [q for q in self.questions if q.type == "FIB"]
+            frames = [q.pprint() for q in fibs]
+            doc_name = "main-{}-{}.tex".format("fib", 0)
+            q_name = "q-{}-{}.tex".format("fib", 0)
             self._gen_question_doc(q_name, frames)
             self._gen_main_doc(doc_name, q_name)
+            all_students = [student for group in assigned_students for student in group]
+            assignment["questions"].extend([q.json(self.id_, q_num, 0, doc_name, self.start_time,
+                                                   self.end_time, all_students, quiz, part)
+                                            for q_num, q in enumerate(fibs)])
 
-        frames = [q.pprint() for q in self.questions if q.type == "FIB"]
-        doc_name = "main-{}-{}.tex".format("fib", 0)
-        q_name = "q-{}-{}.tex".format("fib", 0)
-        self._gen_question_doc(q_name, frames)
-        self._gen_main_doc(doc_name, q_name)
+        if sample < 0:
+            # Group students into buckets and assign each version of question to one bucket [number of buckets == number of versions]
+            files = os.listdir(self.question_file)
+            files = sorted(files, key=lambda s: int(s.strip(".tex")))
+
+            for q_num, f in enumerate(files):
+                self._parse_doc(os.path.join(self.question_file, f))
+                assigned_students, _ = self.split_rolls(len(self.questions))
+
+                frames = []
+                doc_name = "main-{}-{}.tex".format(self.id_, q_num)
+                q_name = "q-{}-{}.tex".format(self.id_, q_num)
+                for copy_id, q in enumerate(self.questions):
+                    frames.append(q.pprint())
+                    assignment["questions"].append(q.json(self.id_, q_num, copy_id,
+                                                   doc_name, self.start_time, self.end_time,
+                                                   assigned_students[copy_id], quiz, part))
+                self._gen_question_doc(q_name, frames)
+                self._gen_main_doc(doc_name, q_name)
+
 
         print("Generated {} versions of Assignment {}".format(num_versions, self.id_))
         with open(os.path.join(self.output, "assignment.json"), "w") as f:
@@ -169,8 +201,6 @@ class Assignment(object):
             "description": "Quiz " if quiz else "Bulk uploaded assignment for class review",
             "questions": []
         }
-        if quiz:
-            s["quiz"] = True
         return s
 
     def _shuffle_questions(self, shuffle_list):
@@ -278,26 +308,34 @@ class Question(object):
         return content
 
     def json(self, assign_id, q_num, copy_id, doc_name, start_time, end_time, assigned_students, quiz=False, part=0):
+        if part > 0:
+            title = "Quiz {}, Part {}, Question".format(assign_id, part) if quiz else "Class review {} Question".format(assign_id)
+            description = "Quiz {}, Part {}, Question {}".format(assign_id, part, q_num+1) if quiz else "Class review {} Question {}".format(assign_id, q_num+1)
 
-        title = "Quiz {}, Part {}, Question".format(assign_id, part) if quiz else "Class review {} Question".format(assign_id)
-        description = "Quiz {}, Part {}, Question {}".format(assign_id, part, q_num+1) if quiz else "Class review {} Question {}".format(assign_id, q_num+1)
+        else:
+            title = "Quiz {}, Question".format(assign_id) if quiz else "Class review {} Question".format(assign_id)
+            description = "Quiz {}, Question {}".format(assign_id, q_num+1) if quiz else "Class review {} Question {}".format(assign_id, q_num+1)
+
         description = description + "\n" + self.desc
         code = "q_{}_{}_{}_{}".format(assign_id, part, copy_id, q_num) if quiz else "q_{}_{}_{}".format(assign_id, copy_id, q_num)
         s = {
             "title": title,
             "number": q_num + 1,
             "code": code,
+            "type": self.type,
             "description": description,
             "start_time": start_time,
             "end_time": end_time,
             "tas": [
                 "cvit.office@research.iiit.ac.in"
             ],
-            "image": "{}-{}.png".format(doc_name.replace(".tex", ".pdf"), q_num),
+            "image": "{}-{}.png".format(doc_name.replace(".tex", ".pdf"), copy_id if quiz and not part else q_num),
             "marks": 1,
-            "options": [x.json(i) for i, x in enumerate(self.options)],
+
             "students": assigned_students
         }
+        if self.type == "MCQ":
+            s["options"] = [x.json(i) for i, x in enumerate(self.options)]
         return s
 
 
@@ -360,7 +398,7 @@ def make_assignment(args):
                             args.roll_nums,
                             )
 
-    assignment.gen_key(quiz=quiz, part=args.part)
+    # assignment.gen_key(quiz=quiz, part=args.part)
     assignment.gen_versions(args.num_versions, shuffle_question, args.shuffle_list, shuffle_options, quiz=quiz, part=args.part, sample=args.sample)
     values = [
         {
