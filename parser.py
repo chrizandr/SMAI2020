@@ -112,10 +112,12 @@ class Assignment(object):
             # No versioning for FIB
             fibs = [q for q in self.questions if q.type == "FIB"]
             frames = [q.pprint() for q in fibs]
-            doc_name = "main-{}-{}.tex".format("fib", 0)
-            q_name = "q-{}-{}.tex".format("fib", 0)
-            self._gen_question_doc(q_name, frames)
-            self._gen_main_doc(doc_name, q_name)
+            if len(frames) > 0:
+                doc_name = "main-{}-{}.tex".format("fib", 0)
+                q_name = "q-{}-{}.tex".format("fib", 0)
+                self._gen_question_doc(q_name, frames)
+                self._gen_main_doc(doc_name, q_name)
+
             all_students = [student for group in assigned_students for student in group]
             assignment["questions"].extend([q.json(self.id_, q_num, 0, doc_name, self.start_time,
                                                    self.end_time, all_students, quiz, part)
@@ -398,32 +400,32 @@ def make_assignment(args):
                             args.roll_nums,
                             )
 
-    # assignment.gen_key(quiz=quiz, part=args.part)
+    assignment.gen_key(quiz=quiz, part=args.part)
     assignment.gen_versions(args.num_versions, shuffle_question, args.shuffle_list, shuffle_options, quiz=quiz, part=args.part, sample=args.sample)
-    values = [
-        {
-            "m": (int, [2, 6]),
-            "p": (float, [0.1, 0.9]),
-        },
-        {
-            "w_1": (int, [1, 10]),
-            "w_2": (int, [1, 10]),
-            "b_1": (int, [1, 10]),
-            "b_2": (int, [1, 10]),
-        },
-        {
-            "K": (int, [0, 10])
-        },
-        {
-            "A": (int, [0, 10]),
-            "B": (int, [0, 10]),
-            "C": (int, [0, 10]),
-            "D": (int, [0, 10]),
-        },
-        {
-            "N": (int, [3, 10])
-        }
-    ]
+    # values = [
+    #     {
+    #         "m": (int, [2, 6]),
+    #         "p": (float, [0.1, 0.9]),
+    #     },
+    #     {
+    #         "w_1": (int, [1, 10]),
+    #         "w_2": (int, [1, 10]),
+    #         "b_1": (int, [1, 10]),
+    #         "b_2": (int, [1, 10]),
+    #     },
+    #     {
+    #         "K": (int, [0, 10])
+    #     },
+    #     {
+    #         "A": (int, [0, 10]),
+    #         "B": (int, [0, 10]),
+    #         "C": (int, [0, 10]),
+    #         "D": (int, [0, 10]),
+    #     },
+    #     {
+    #         "N": (int, [3, 10])
+    #     }
+    # ]
     # assignment.gen_per_student(values, quiz, args.part)
     pass
 

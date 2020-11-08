@@ -10,20 +10,20 @@ output = latex/
 roll_nums = smai_students2.csv
 timestamp = $$(date --iso-8601=seconds)
 
-quiz = True
+quiz = False
 part = 0
-# assignment = assignment
-assignment = quiz
+assignment = assignment
+# assignment = quiz
 
-sample = -1
+sample = 0
 
-question_file = quiz/3/
-assignment_id = 3
-start_time = 2020-11-04T09:30:15+05:30
-end_time = 2020-11-04T10:30:15+05:30
+question_file = questions/q29.tex
+assignment_id = 30
+start_time = 2020-11-06T09:00:15+05:30
+end_time = 2020-11-06T09:40:15+05:30
 
-shuffle_question = False
-shuffle_options = False
+shuffle_question = True
+shuffle_options = True
 # shuffle_list = 0 1 2
 shuffle_list = -1
 

@@ -1,0 +1,76 @@
+\begin{frame}
+\section{}
+Consider an MLP: 2 input, one hidden  layer (3 neurons) and one output. All neurons use ReLU activation. No bias. We use MSE loss.
+
+Network is initialized with all weights as zero.
+\begin{enumerate}[label=(\Alph*)]
+\item Output is zero.   % Ans
+\item All derivatives ($\frac{\partial L}{\partial w})$ are zero.   % Ans
+\item Loss is zero.
+\item With Back propagation, weights  won't change.   % Ans
+\item  None of the above.  % None
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\section{}
+Consider an MLP: 2 input, one hidden  layer (3 neurons) and one output. All neurons use ReLU activation. No bias. We use MSE loss.
+
+Network is initialized with all weights as non-zero but a small  constant.
+
+\begin{enumerate}[label=(\Alph*)]
+\item Output is zero.
+\item All derivatives ($\frac{\partial L}{\partial w})$ are zero.
+\item Loss is zero.
+\item With Back propagation, weights  won't change.
+\item  None of the above.   % Ans  % None
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\section{}
+Consider an MLP: 2 input, one hidden  layer (3 neurons) and one output. All neurons use ReLU activation. No bias. We use MSE loss.
+
+What may be a better initialization, among the following?
+
+\begin{enumerate}[label=(\Alph*)]
+\item All weights the same.
+\item All the weights random and positive   % Ans
+\item All the weights random and negative.    % Ans
+\item Some weights random and positive and some weights random and negative.    % Ans
+\item All of the above are equally good or equally bad.  % None
+\end{enumerate}
+\end{frame}
+
+
+\begin{frame}
+\section{}
+Consider an MLP: 2 input, one hidden  layer (3 neurons) and one output. All neurons use ReLU activation. No bias. We use MSE loss.
+
+We use this network for regression to predict, say the mean temperature of tomorrow in Hyderabad, which is always positive.
+
+We train the network with sufficient amount of data, and follow good practices of training.
+
+\begin{enumerate}[label=(\Alph*)]
+\item At the end of training, we are at a local minima.   % Ans
+\item At the end of training, we will be at a global minima.
+\item At the end of training Loss will become zero.
+\item At the end of training, all our weights will be positive.
+\item None of the above.  % None
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\section{}
+Consider an MLP: 2 input, one hidden  layer (3 neurons) and one output. All neurons use ReLU activation. No bias. We use MSE loss.
+
+We initialize the network with good practices available/reported. Starting from the same initialization,  we train the network multiple times with BP/GD. Starting from the same initialization,  we train the network multiple times with BP/GD with momentum term also.
+
+\begin{enumerate}[label=(\Alph*)]
+\item Starting from the same initialization, the solution at epoch 100 remains same in all the runs, when the implementation was SGD.
+\item Starting from the same initialization, the solution at epoch 100 remains same in all the runs, when the implementation was batch GD.    % Ans
+\item Starting from the same initialization, the solution at epoch 100 remains same with or without momentum.
+\item With an appropriate but fixed convergence criteria (say early stopping), models trained with and without momentum will be the same.
+\item With an appropriate but fixed convergence criteria (say early stopping), models trained with and without momentum could be different.   % Ans
+\end{enumerate}
+\end{frame}
