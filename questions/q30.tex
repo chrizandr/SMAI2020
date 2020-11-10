@@ -1,76 +1,82 @@
 \begin{frame}
 \section{}
-Consider an MLP: 2 input, one hidden  layer (3 neurons) and one output. All neurons use ReLU activation. No bias. We use MSE loss.
+Among the following problems, a clustering algorithm is mostly appropriate for:
 
-Network is initialized with all weights as zero.
 \begin{enumerate}[label=(\Alph*)]
-\item Output is zero.   % Ans
-\item All derivatives ($\frac{\partial L}{\partial w})$ are zero.   % Ans
-\item Loss is zero.
-\item With Back propagation, weights  won't change.   % Ans
-\item  None of the above.  % None
+\item Predicting the rainfall in HYD in 2022.
+\item For a robot to decide the direction to travel to Himalaya 105 class room.
+\item To detect Credit Card transactions that are Frauds    % Ans
+\item To translate a sentence from Hindo to Telugu
+\item All the above  % None
 \end{enumerate}
 \end{frame}
 
 \begin{frame}
 \section{}
-Consider an MLP: 2 input, one hidden  layer (3 neurons) and one output. All neurons use ReLU activation. No bias. We use MSE loss.
-
-Network is initialized with all weights as non-zero but a small  constant.
-
+Consider a Divisive Clustering Algorithm with two steps:
+\begin{itemize}
+\item Create an MST
+\item Successively remove the longest or largest edges.
+\end{itemize}
+Assume there are 100 samples, and all edges are of unique length. If we have removed 5 edges, the number of clusters is:
 \begin{enumerate}[label=(\Alph*)]
-\item Output is zero.
-\item All derivatives ($\frac{\partial L}{\partial w})$ are zero.
-\item Loss is zero.
-\item With Back propagation, weights  won't change.
-\item  None of the above.   % Ans  % None
+\item 5
+\item $2^5$
+\item $5^2$
+\item 6   % Ans
+\item None of the above.    % None
 \end{enumerate}
 \end{frame}
 
 \begin{frame}
 \section{}
-Consider an MLP: 2 input, one hidden  layer (3 neurons) and one output. All neurons use ReLU activation. No bias. We use MSE loss.
+Consider a Divisive Clustering Algorithm with two steps:
+\begin{itemize}
+\item Create an MST
+\item Successively remove the longest or largest edges.
+\end{itemize}
+Assume there are 100 samples, and all edges are of unique length.
 
-What may be a better initialization, among the following?
 
 \begin{enumerate}[label=(\Alph*)]
-\item All weights the same.
-\item All the weights random and positive   % Ans
-\item All the weights random and negative.    % Ans
-\item Some weights random and positive and some weights random and negative.    % Ans
-\item All of the above are equally good or equally bad.  % None
+\item This algorithm is yielding a globally optimal solution to a specific objective.    % Ans
+\item Every run of this algorithm can give different solution and therefore, this is sensitive to the ordering/indices of the samples in the set.
+\item Since this is a global optima, there can not exist a better clustering algorithm.
+\item Since there are better/other clustering algorithms, the final solution is only locally optimal.
+\item The objective function that this algorithm minimizes is the following: \[ \sum_{l} \sum_{x_i, x_j \in C_l} d(x_i, x_j)^2 \]    % Ans
 \end{enumerate}
 \end{frame}
 
 
 \begin{frame}
 \section{}
-Consider an MLP: 2 input, one hidden  layer (3 neurons) and one output. All neurons use ReLU activation. No bias. We use MSE loss.
-
-We use this network for regression to predict, say the mean temperature of tomorrow in Hyderabad, which is always positive.
-
-We train the network with sufficient amount of data, and follow good practices of training.
+Assume there are $N$ samples in a data set, the number of distinct ways in which we can cluster this set is:
 
 \begin{enumerate}[label=(\Alph*)]
-\item At the end of training, we are at a local minima.   % Ans
-\item At the end of training, we will be at a global minima.
-\item At the end of training Loss will become zero.
-\item At the end of training, all our weights will be positive.
-\item None of the above.  % None
+\item $N$
+\item $2^N$
+\item $N!$
+\item $_NC_2$
+\item None of the above  % None`    % Ans
 \end{enumerate}
 \end{frame}
 
 \begin{frame}
 \section{}
-Consider an MLP: 2 input, one hidden  layer (3 neurons) and one output. All neurons use ReLU activation. No bias. We use MSE loss.
+Consider a Divisive Clustering Algorithm with two steps:
+\begin{itemize}
+\item Create an MST
+\item Successively remove the longest or largest edges.
+\end{itemize}
+Assume there are 100 samples, and all edges are unique length.
 
-We initialize the network with good practices available/reported. Starting from the same initialization,  we train the network multiple times with BP/GD. Starting from the same initialization,  we train the network multiple times with BP/GD with momentum term also.
+What can be a {\bf bad} termination criteria?
 
 \begin{enumerate}[label=(\Alph*)]
-\item Starting from the same initialization, the solution at epoch 100 remains same in all the runs, when the implementation was SGD.
-\item Starting from the same initialization, the solution at epoch 100 remains same in all the runs, when the implementation was batch GD.    % Ans
-\item Starting from the same initialization, the solution at epoch 100 remains same with or without momentum.
-\item With an appropriate but fixed convergence criteria (say early stopping), models trained with and without momentum will be the same.
-\item With an appropriate but fixed convergence criteria (say early stopping), models trained with and without momentum could be different.   % Ans
+\item Stop when all the left out edges are less than $p$
+\item Stop when there are no more edges to remove.    % Ans
+\item Stop when the length of the next largest is less than half of the edge removed in the previous step?
+\item Stop when the length of the next largest is more than half of the edge removed in the previous step?    % Ans
+\item Average length of leftout edges is more than average length of removed edges.   % Ans
 \end{enumerate}
 \end{frame}

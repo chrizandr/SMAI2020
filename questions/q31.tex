@@ -1,0 +1,66 @@
+\begin{frame}
+\section{}
+In K-Means:
+\begin{enumerate}[label=(\Alph*)]
+\item $K$ is often much smaller than $N$.   % Ans
+\item $K$ is often larger than $N$
+\item $K$ is often equal to N.
+\item $K$ is often odd.
+\item None of the above  % None
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\section{}
+K-Means:
+
+\begin{enumerate}[label=(\Alph*)]
+\item maximizes the sum of within cluster variances
+\item reaches the same final answer irrespective of the initialization.
+\item cluster assignments are mutually exclusive and collectively exhaustive.   % Ans
+\item never converges to the global optima.
+\item None of the above   % None
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\section{}
+Consider a measure computed from the final answer of K-Means:
+\[ J_k = \frac{1}{k} \sum_{l} \sum_{x_i \in C_l} ||x_i - \mu_l||_2^2 \]
+
+With increase in $k$
+
+\begin{enumerate}[label=(\Alph*)]
+\item $J_k$ will monotonically increase
+\item $J_k$ will monotonically decrease.    % Ans
+\item It could increase first and then decrease.
+\item It could decrease and then increase
+\item None of the above.    % None
+\end{enumerate}
+\end{frame}
+
+
+\begin{frame}
+\section{}
+Computational complexity/effort of K-means algorithm depends on:
+\begin{enumerate}[label=(\Alph*)]
+\item K   % Ans
+\item N   % Ans
+\item d   % Ans
+\item No of iterations to converge    % Ans
+\item All the above  % None    % Ans
+\end{enumerate}
+\end{frame}
+
+
+\begin{frame}
+\section{}
+Consider a set of 10 2D points (i.e., $N=10, d=2$) $\{{\bf x_i}\}$ as
+\[ \{ [-2,-1]^T, [-3,-2]^T, [0, -1]^T, [-1,0]^T, [2,3]^T, [-1,-2]^T, [3,2]^T, [3,3]^T, [1,1]^T, [2,2]^T \} \]
+Cluster them into two clusters $K=2$. Initialize the K Means such that the first five samples are in cluster A and the
+next 5 are in cluster B.
+
+Write the final means as
+\[ (x,y) \mbox{ and } (a,b) \]
+% FIB
+\end{frame}

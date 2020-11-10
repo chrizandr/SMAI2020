@@ -77,6 +77,7 @@ class Assignment(object):
             assigned_students, _ = self.split_rolls(num_versions)
 
             for copy_id in range(num_versions):
+                break
                 frames = []
                 if shuffle_question:
                     if shuffle_list == [-1]:
