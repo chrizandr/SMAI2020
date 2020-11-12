@@ -77,7 +77,6 @@ class Assignment(object):
             assigned_students, _ = self.split_rolls(num_versions)
 
             for copy_id in range(num_versions):
-                break
                 frames = []
                 if shuffle_question:
                     if shuffle_list == [-1]:
@@ -112,6 +111,7 @@ class Assignment(object):
 
             # No versioning for FIB
             fibs = [q for q in self.questions if q.type == "FIB"]
+            non_fib = len(self.questions) - len(fibs)
             frames = [q.pprint() for q in fibs]
             if len(frames) > 0:
                 doc_name = "main-{}-{}.tex".format("fib", 0)
@@ -120,8 +120,8 @@ class Assignment(object):
                 self._gen_main_doc(doc_name, q_name)
 
             all_students = [student for group in assigned_students for student in group]
-            assignment["questions"].extend([q.json(self.id_, q_num, 0, doc_name, self.start_time,
-                                                   self.end_time, all_students, quiz, part)
+            assignment["questions"].extend([q.json(self.id_, non_fib + q_num, 0, doc_name, self.start_time,
+                                                   self.end_time, all_students, quiz, part, non_fib)
                                             for q_num, q in enumerate(fibs)])
 
         if sample < 0:
@@ -240,6 +240,7 @@ class Assignment(object):
                   "\\usepackage{styles/common}\n" +\
                   "\\usepackage{styles/beamer-section}\n" +\
                   "\\usepackage{enumitem}\n" +\
+                  "\\usepackage{graphicx}\n" +\
                   "\\setbeamertemplate{navigation symbols}{}\n" +\
                   "\\begin{document}\n" +\
                   "\\input{%s}\n" +\
@@ -310,7 +311,7 @@ class Question(object):
             content = content % (self.content)
         return content
 
-    def json(self, assign_id, q_num, copy_id, doc_name, start_time, end_time, assigned_students, quiz=False, part=0):
+    def json(self, assign_id, q_num, copy_id, doc_name, start_time, end_time, assigned_students, quiz=False, part=0, non_fib=0):
         if part > 0:
             title = "Quiz {}, Part {}, Question".format(assign_id, part) if quiz else "Class review {} Question".format(assign_id)
             description = "Quiz {}, Part {}, Question {}".format(assign_id, part, q_num+1) if quiz else "Class review {} Question {}".format(assign_id, q_num+1)
@@ -332,7 +333,7 @@ class Question(object):
             "tas": [
                 "cvit.office@research.iiit.ac.in"
             ],
-            "image": "{}-{}.png".format(doc_name.replace(".tex", ".pdf"), copy_id if quiz and not part else q_num),
+            "image": "{}-{}.png".format(doc_name.replace(".tex", ".pdf"), copy_id if quiz and not part else q_num-non_fib),
             "marks": 1,
 
             "students": assigned_students

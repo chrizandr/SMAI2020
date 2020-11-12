@@ -17,14 +17,15 @@ assignment = assignment
 
 sample = 0
 
-question_file = questions/q31.tex
-assignment_id = 32
-start_time = 2020-11-11T09:00:15+05:30
-end_time = 2020-11-11T09:40:15+05:30
+question_file = questions/q32.tex
+assignment_id = 33
+start_time = 2020-11-13T09:00:15+05:30
+end_time = 2020-11-13T09:40:15+05:30
 
 shuffle_question = True
 shuffle_options = True
-# shuffle_list = 0 1 2
+# Dont shuffle fill in the blank question, keep in last!!
+# shuffle_list = 0 1 2 3
 shuffle_list = -1
 
 all: create-build clean parse key images package backup
