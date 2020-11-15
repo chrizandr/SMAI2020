@@ -17,10 +17,10 @@ assignment = assignment
 
 sample = 0
 
-question_file = questions/q32.tex
-assignment_id = 33
-start_time = 2020-11-13T09:00:15+05:30
-end_time = 2020-11-13T09:40:15+05:30
+question_file = questions/q33.tex
+assignment_id = 34
+start_time = 2020-11-16T09:00:15+05:30
+end_time = 2020-11-16T09:40:15+05:30
 
 shuffle_question = True
 shuffle_options = True
