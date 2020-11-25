@@ -1,0 +1,66 @@
+\begin{frame}
+\section{}
+Which of the following regularization in NN (implemented in PyTorch) lead to sparse
+\begin{enumerate}[label=(\Alph*)]
+\item L1 regularization   % Ans
+\item L2 regularization
+\item Dropout   % Ans
+\item Data Augmentation
+\item None of the above  % None
+\end{enumerate}
+\end{frame}
+
+
+\begin{frame}
+\section{}
+A sparse set of weights in a Deep MLP is preferred:
+\begin{enumerate}[label=(\Alph*)]
+  \item it could lead to better generalization    % Ans
+  \item it is compact and fit in lesser memory    % Ans
+  \item it has many zeros and lesser amount of operations in forward pass   % Ans
+  \item it is easy to train when the number of weights/parameters are less    % Ans
+  \item All the above  % None   % Ans
+\end{enumerate}
+\end{frame}
+
+
+
+\begin{frame}
+\section{}
+While re-using a trained network for a new task:
+\begin{enumerate}[label=(\Alph*)]
+\item We always prefer to take the later (towards the end) layer
+\item We always prefer to take an early(in the beginning) layer   % Ans
+\item Which layer is more appropriate depends on the tasks.
+\item All the layers are equally useful.
+\item None of the above.  % None
+\end{enumerate}
+\end{frame}
+
+
+
+\begin{frame}
+\section{}
+It is believed that adding noise is some sort of regularization.
+\begin{enumerate}[label=(\Alph*)]
+\item Adding noise to the input  is useful.   % Ans
+\item Adding noise to the output/labels is useful. (for simplicity, assume the task is regression!).
+\item Adding noise to the weights is useful.    % Ans
+\item Higher the noise the better the regularization.   % Ans
+\item Lower the noise the better the regularization
+\end{enumerate}
+\end{frame}
+
+
+
+\begin{frame}
+\section{}
+Consider a problem where we do data augmentation and early stopping.
+\begin{enumerate}[label=(\Alph*)]
+\item With data augmentation, training accuracy is expected to increase.
+\item With data augmentation, training accuracy may decrease.   % Ans
+\item With data augmentation, performance on the validation set is expected to increase.    % Ans
+\item With data augmentation, the iteration where we do  early stop, will increase.
+\item With data augmentation, the iteration where we do  early stop, will decrease.   % Ans
+\end{enumerate}
+\end{frame}
