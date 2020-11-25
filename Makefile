@@ -10,25 +10,27 @@ output = latex/
 roll_nums = smai_students2.csv
 timestamp = $$(date --iso-8601=seconds)
 
-quiz = False
+quiz = True
 part = 0
-assignment = assignment
-# assignment = quiz
+# assignment = assignment
+assignment = quiz
 
-sample = 0
+sample = -1
 
-question_file = questions/q34.tex
-assignment_id = 35
-start_time = 2020-11-18T09:00:15+05:30
-end_time = 2020-11-18T09:40:15+05:30
+question_file = quiz/4
+assignment_id = 4
+start_time = 2020-11-25T17:30:15+05:30
+end_time = 2020-11-25T18:30:15+05:30
 
-shuffle_question = True
-shuffle_options = True
+shuffle_question = False
+shuffle_options = False
 # Dont shuffle fill in the blank question, keep in last!!
 # shuffle_list = 0 1 2 3
 shuffle_list = -1
 
 all: create-build clean parse key images package backup
+
+no-key: create-build clean parse images package backup-nokey
 
 create-build:
 	mkdir -p build
@@ -72,6 +74,10 @@ backup:
 		cp $$f "archive/keys/`basename $$f`_$(timestamp).pdf"; \
 	done
 
+backup-nokey:
+	cp "$(assignment).zip" "archive/$(assignment)_$(assignment_id)_$(timestamp).zip"
+
+
 parse:
 	python3 parser.py --num_versions $(num_versions) --question_file $(question_file) --output $(output) \
 	--assignment_id $(assignment_id) --start_time $(start_time) --end_time $(end_time) --roll_nums $(roll_nums) \
@@ -82,6 +88,8 @@ sync: clean
 	git add .
 	git commit -m "Syncing"
 	git push origin master
+
+test: create-build clean parse key images
 
 # 1 - 9:30- 10:30
 # 2 - 6:45 - 7:00
